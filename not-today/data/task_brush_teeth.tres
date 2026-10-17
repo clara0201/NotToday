@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TaskResource" format=3 uid="uid://so1j5nlhx12i"]
+
+[ext_resource type="PackedScene" uid="uid://dogqo7r731jaw" path="res://scenes/minigames/MG_brush_teeth.tscn" id="1_4ducr"]
+[ext_resource type="Script" uid="uid://e2byqvdy5qq2" path="res://scripts/resources/task_resource.gd" id="1_furf8"]
+
+[resource]
+script = ExtResource("1_furf8")
+title = "Brush the king's teeth!!"
+description = "Pretty self explanatory"
+giver = "King"
+minigame_scene = ExtResource("1_4ducr")
+metadata/_custom_type_script = "uid://e2byqvdy5qq2"

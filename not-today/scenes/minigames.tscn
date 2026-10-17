@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b8ldh687wg37v"]
+
+[ext_resource type="Script" uid="uid://ddwf1cxldawii" path="res://scripts/game_manager.gd" id="1_msb3r"]
+[ext_resource type="Script" uid="uid://e2byqvdy5qq2" path="res://scripts/resources/task_resource.gd" id="2_h6msd"]
+[ext_resource type="Resource" uid="uid://so1j5nlhx12i" path="res://data/task_brush_teeth.tres" id="3_w7mfh"]
+[ext_resource type="Resource" uid="uid://evna4chduf8e" path="res://data/task_chop_wood.tres" id="4_w7mfh"]
+
+[node name="Minigames" type="Node2D" unique_id=987244377]
+script = ExtResource("1_msb3r")
+tasks_list = Array[ExtResource("2_h6msd")]([ExtResource("3_w7mfh"), ExtResource("4_w7mfh")])
+
+[node name="MinigamesWindow" type="Window" parent="." unique_id=1927533686]
+oversampling_override = 1.0
+title = "Tasks time!"
+position = Vector2i(0, 36)
+size = Vector2i(1500, 900)
+visible = false
+unresizable = true
+always_on_top = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1518125045]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
