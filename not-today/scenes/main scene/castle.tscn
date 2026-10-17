@@ -78,6 +78,7 @@ always_on_top = true
 one_shot = true
 
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=948260857]
+visible = false
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions" unique_id=1126242797]
 visible = false
@@ -99,11 +100,13 @@ position = Vector2(630.5, -315.5)
 shape = SubResource("RectangleShape2D_udjd0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2020563840]
+visible = false
 process_callback = 0
 script = ExtResource("1_7r2yl")
 SPEED = 5
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1394335509]
+visible = false
 offset_left = -1920.0
 offset_top = -1080.0
 offset_right = 1920.0
@@ -111,6 +114,7 @@ offset_bottom = 1080.0
 texture = ExtResource("1_u6f05")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=690931745]
+visible = false
 script = ExtResource("2_pi1jp")
 
 [node name="Player Sprite" type="Sprite2D" parent="Player" unique_id=152975476]
@@ -128,6 +132,7 @@ visible = false
 shape = SubResource("CircleShape2D_dhvi1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1659786690]
+visible = false
 position = Vector2(672, 152)
 texture = ExtResource("3_4jbif")
 
@@ -196,6 +201,22 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "No's: 0"
+
+[node name="TimerMC" type="MarginContainer" parent="CanvasLayer" unique_id=179588991]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 30
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer/TimerMC" unique_id=1812820398]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "00s"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 

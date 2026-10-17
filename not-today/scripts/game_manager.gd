@@ -7,6 +7,7 @@ class_name GameManager
 @onready var likeability_icon = $CanvasLayer/CountersMC/HBoxContainer/LikeabilityIcon
 @onready var no_label = $CanvasLayer/CountersMC/HBoxContainer/NosLabel
 @onready var no_icon = $CanvasLayer/CountersMC/HBoxContainer/NosIcon
+@onready var timer_label = $CanvasLayer/TimerMC/TimerLabel
 
 @export var likeability_percentage = 30
 @export var likeability_loss = 10
@@ -18,11 +19,12 @@ class_name GameManager
 
 @export var minigames_timer = 5 # in seconds
 
-@export var current_day = 1
-
 @export var tasks_list : Array[TaskResource]
 @export var current_task_index = 0
 @export var current_minigame : Minigame
+
+var current_day = 1
+var in_minigame_phase = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,21 +32,29 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#TODO update timer display if in mingame phase
-	
+	if(in_minigame_phase):
+		timer_label.text = "%02d:%02d" % time_left()
+
 	if Input.is_action_pressed("MinigamePhase"):
 		start_minigame_phase()
 
+func time_left():
+	var time_left = timer.time_left
+	var minute = floor(time_left / 60)
+	var second = int(time_left) % 60
+	return [minute, second]
 
 ### MINIGAMES ###
 
 func start_minigame_phase():
-	print("start!")
 	#TODO pause player controller
 	
 	minigames_window.position.x = 400
 	minigames_window.position.y = 160
 	minigames_window.show()
+	
+	in_minigame_phase = true
+	timer_label.show()
 	
 	timer.start(minigames_timer)
 	
@@ -56,6 +66,9 @@ func finish_minigame_phase():
 			on_minigame_not_completed(task)
 	
 	update_displays() #TBD maybe do a special sequence to recount the incompleted tasks
+	
+	in_minigame_phase = false
+	timer_label.hide()
 	
 	minigames_window.hide()
 	
