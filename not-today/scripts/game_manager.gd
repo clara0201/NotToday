@@ -26,16 +26,20 @@ class_name GameManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	start_minigame_phase()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#TODO update timer display if in mingame phase
-	pass
+	
+	if Input.is_action_pressed("MinigamePhase"):
+		start_minigame_phase()
+
 
 ### MINIGAMES ###
 
 func start_minigame_phase():
+	print("start!")
 	#TODO pause player controller
 	
 	minigames_window.position.x = 400
