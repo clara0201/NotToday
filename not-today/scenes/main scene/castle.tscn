@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bso0e5o4mgbly"]
+
+[ext_resource type="Script" uid="uid://st5bvixnhx2f" path="res://scenes/main scene/camera_2d.gd" id="1_7r2yl"]
+[ext_resource type="Script" uid="uid://buekkab7cq6dd" path="res://scenes/main scene/player.gd" id="2_pi1jp"]
+[ext_resource type="Texture2D" uid="uid://i8ojs5t3c053" path="res://scenes/main scene/SpriteTemp.png" id="3_u6f05"]
+[ext_resource type="Texture2D" uid="uid://dc35p2r1bv2dm" path="res://scenes/main scene/SpriteTemp01 - Copy.png" id="4_4jbif"]
+[ext_resource type="Texture2D" uid="uid://dft5udjgu727a" path="res://scenes/main scene/SpriteTemp02 - Copy.png" id="5_s1hkd"]
+[ext_resource type="Texture2D" uid="uid://dt2gmywqqt0q7" path="res://scenes/main scene/SpriteTemp02.png" id="6_ohiwn"]
+[ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tgexr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhvi1"]
+size = Vector2(90, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u6f05")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4jbif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s1hkd")
+}],
+"loop": 1,
+"name": &"runL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ohiwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3mmif")
+}],
+"loop": 1,
+"name": &"runR",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=710089954]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2020563840]
+process_callback = 0
+script = ExtResource("1_7r2yl")
+SPEED = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1595267212]
+position = Vector2(-1.5000076, -1.0000043)
+scale = Vector2(169, 200.00002)
+texture = SubResource("CanvasTexture_tgexr")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=690931745]
+script = ExtResource("2_pi1jp")
+
+[node name="Player Sprite" type="Sprite2D" parent="Player" unique_id=152975476]
+visible = false
+position = Vector2(1, -2.2999725)
+scale = Vector2(0.24218749, 0.24879257)
+texture = ExtResource("3_u6f05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1853553819]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_dhvi1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=284465383]
+position = Vector2(-2.0117817, -4.999997)
+scale = Vector2(0.28235286, 0.28235292)
+sprite_frames = SubResource("SpriteFrames_udjd0")
