@@ -3,8 +3,12 @@ class_name GameManager
 
 @onready var minigames_window = $MinigamesWindow
 @onready var timer = $Timer
+@onready var likeability_label = $CanvasLayer/CountersMC/HBoxContainer/LikeabilityLabel
+@onready var likeability_icon = $CanvasLayer/CountersMC/HBoxContainer/LikeabilityIcon
+@onready var no_label = $CanvasLayer/CountersMC/HBoxContainer/NosLabel
+@onready var no_icon = $CanvasLayer/CountersMC/HBoxContainer/NosIcon
 
-@export var likeability_percentage : int
+@export var likeability_percentage = 30
 @export var likeability_loss = 10
 @export var likeability_gain = 5
 
@@ -12,13 +16,13 @@ class_name GameManager
 @export var progress_to_no = 0
 @export var no_threshold = 2
 
-@export var minigames_timer = 180 # in seconds
+@export var minigames_timer = 5 # in seconds
 
 @export var current_day = 1
-@export var current_minigame : Minigame
 
 @export var tasks_list : Array[TaskResource]
 @export var current_task_index = 0
+@export var current_minigame : Minigame
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,7 +46,7 @@ func start_minigame_phase():
 	
 	next_minigame()
 
-func finish_mingame_phase():	
+func finish_minigame_phase():	
 	for task in tasks_list:
 		if not task.completed:
 			on_minigame_not_completed(task)
@@ -55,13 +59,13 @@ func finish_mingame_phase():
 
 func next_minigame():	
 	if(current_task_index >= tasks_list.size()):
-		finish_mingame_phase()
+		finish_minigame_phase()
 		return
 	
 	var task = tasks_list[current_task_index]
 	
 	if(task.minigame_scene == null):
-		push_error("No mingame scene assigned to task!")
+		push_error("No minigame scene assigned to task!")
 	
 	current_minigame = task.minigame_scene.instantiate() as Minigame
 	
@@ -69,7 +73,6 @@ func next_minigame():
 	current_minigame.minigame_completed.connect(on_minigame_completed)
 
 	current_minigame.start_minigame()
-	pass
 
 func on_minigame_not_completed(task: TaskResource) -> void:
 	progress_to_no += 1
@@ -93,12 +96,12 @@ func on_minigame_completed() -> void:
 	current_task_index += 1
 	next_minigame()
 
-func update_displays() -> void:
-	#TODO update UI
-	pass
+func update_displays() -> void:	
+	likeability_label.text = "Likeability: " + str(likeability_percentage) + "%"
+	no_label.text = "No's: " + str(no_counter)
 
 
 ### SIGNALS ###
 
 func _on_timer_timeout() -> void:
-	finish_mingame_phase()
+	finish_minigame_phase()
