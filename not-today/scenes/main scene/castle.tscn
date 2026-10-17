@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
 [ext_resource type="PackedScene" uid="uid://b075itcslrm22" path="res://scenes/task_ticket.tscn" id="10_s1hkd"]
 [ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="11_ohiwn"]
+[ext_resource type="PackedScene" uid="uid://bg7wn8rka1eih" path="res://scenes/npc.tscn" id="13_ioo1u"]
+[ext_resource type="Resource" uid="uid://bvtg367mobflc" path="res://data/npcs/king.tres" id="14_4aumm"]
 [ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4qgy"]
@@ -193,6 +195,10 @@ sprite_frames = SubResource("SpriteFrames_udjd0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1744312612]
 visible = false
 shape = SubResource("CircleShape2D_dhvi1")
+
+[node name="King" parent="." unique_id=272560002 instance=ExtResource("13_ioo1u")]
+position = Vector2(348, -452)
+npc_data = ExtResource("14_4aumm")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1659786690]
 position = Vector2(672, 152)

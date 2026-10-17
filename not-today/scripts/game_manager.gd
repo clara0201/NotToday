@@ -40,7 +40,9 @@ var day_names = ["Mondagt", "Tuesdlof", "Wednasgot"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	# Connect NPC interaction signals
+	for npc in get_tree().get_nodes_in_group("npcs"):
+		npc.interacted.connect(_on_npc_interacted)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -173,7 +175,6 @@ func update_displays() -> void:
 	likeability_label.text = "Likeability: " + str(likeability_percentage) + "%"
 	no_label.text = "No's: " + str(no_counter)
 
-
 ### SIGNALS ###
 
 func _on_timer_timeout() -> void:
@@ -181,3 +182,17 @@ func _on_timer_timeout() -> void:
 
 func _on_next_day_button_pressed() -> void:
 	start_day()
+
+func _on_npc_interacted(npc: NPC) -> void:
+	print("adw")
+	var player := get_tree().get_first_node_in_group("player")
+	if player and player.has_method("start_interaction"):
+		player.start_interaction()
+
+	if npc.npc_data:
+		for line in npc.npc_data.dialogue_lines:
+			print(npc.npc_data.display_name + ": " + line)
+
+	await get_tree().create_timer(0.5).timeout
+	if player and player.has_method("end_interaction"):
+		player.end_interaction()
