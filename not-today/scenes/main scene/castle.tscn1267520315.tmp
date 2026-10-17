@@ -1,0 +1,394 @@
+[gd_scene format=3 uid="uid://bso0e5o4mgbly"]
+
+[ext_resource type="Script" uid="uid://st5bvixnhx2f" path="res://scenes/main scene/camera_2d.gd" id="1_7r2yl"]
+[ext_resource type="Script" uid="uid://ddwf1cxldawii" path="res://scripts/game_manager.gd" id="1_ohiwn"]
+[ext_resource type="Texture2D" uid="uid://dsrw35hscdvnp" path="res://assets/courtTemp.png" id="1_u6f05"]
+[ext_resource type="Script" uid="uid://e2byqvdy5qq2" path="res://scripts/resources/task_resource.gd" id="2_l2ux7"]
+[ext_resource type="Script" uid="uid://buekkab7cq6dd" path="res://scenes/main scene/player.gd" id="2_pi1jp"]
+[ext_resource type="Texture2D" uid="uid://c3h3iox2wyyna" path="res://assets/lamp.png" id="3_4jbif"]
+[ext_resource type="Resource" uid="uid://so1j5nlhx12i" path="res://data/task_brush_teeth.tres" id="3_cq7t8"]
+[ext_resource type="Texture2D" uid="uid://i8ojs5t3c053" path="res://scenes/main scene/SpriteTemp.png" id="3_u6f05"]
+[ext_resource type="Texture2D" uid="uid://dc35p2r1bv2dm" path="res://scenes/main scene/SpriteTemp01 - Copy.png" id="4_4jbif"]
+[ext_resource type="Resource" uid="uid://evna4chduf8e" path="res://data/task_chop_wood.tres" id="4_ioo1u"]
+[ext_resource type="Texture2D" uid="uid://dft5udjgu727a" path="res://scenes/main scene/SpriteTemp02 - Copy.png" id="5_s1hkd"]
+[ext_resource type="Texture2D" uid="uid://dt2gmywqqt0q7" path="res://scenes/main scene/SpriteTemp02.png" id="6_ohiwn"]
+[ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
+[ext_resource type="PackedScene" uid="uid://b075itcslrm22" path="res://scenes/task_ticket.tscn" id="10_s1hkd"]
+[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="11_ohiwn"]
+[ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4qgy"]
+radius = 56.0803
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4qgy"]
+size = Vector2(133, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udjd0"]
+size = Vector2(163, 129)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u6f05")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4jbif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s1hkd")
+}],
+"loop": 1,
+"name": &"runL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ohiwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3mmif")
+}],
+"loop": 1,
+"name": &"runR",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhvi1"]
+radius = 50.447994
+
+[sub_resource type="Animation" id="Animation_l2ux7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cq7t8"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ioo1u"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioo1u"]
+_data = {
+&"RESET": SubResource("Animation_l2ux7"),
+&"fade_to_black": SubResource("Animation_cq7t8"),
+&"fade_to_normal": SubResource("Animation_ioo1u")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2ux7"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Node2D" type="Node2D" unique_id=710089954]
+script = ExtResource("1_ohiwn")
+minigames_timer = 20
+tasks_list = Array[ExtResource("2_l2ux7")]([ExtResource("3_cq7t8"), ExtResource("4_ioo1u")])
+
+[node name="TimerMinigames" type="Timer" parent="." unique_id=907534146]
+one_shot = true
+
+[node name="Collisions" type="StaticBody2D" parent="." unique_id=948260857]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions" unique_id=1126242797]
+visible = false
+position = Vector2(639, 356)
+shape = SubResource("CircleShape2D_g4qgy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" unique_id=1964603333]
+visible = false
+polygon = PackedVector2Array(1082, -1077, 1096, 916, 214, 911, 209, 1082, -308, 1082, -282, 922, -941, 934, -936, 349, -1104, 349, -1118, 928, -1920, 948, -1920, -245, -1132, -270, -1130, 109, -953, 109, -916, -1084, 1247, -1084, 291, -1509, -2188, -1372, -2305, 979, -1044, 1704, 1855, 1444, 2454, 289, 2254, -1086, 1838, -1343)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=467455742]
+visible = false
+position = Vector2(-571.5, -333)
+shape = SubResource("RectangleShape2D_g4qgy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions" unique_id=762477035]
+visible = false
+position = Vector2(630.5, -315.5)
+shape = SubResource("RectangleShape2D_udjd0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2020563840]
+process_callback = 0
+script = ExtResource("1_7r2yl")
+SPEED = 5
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1394335509]
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_u6f05")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=690931745]
+script = ExtResource("2_pi1jp")
+
+[node name="Player Sprite" type="Sprite2D" parent="Player" unique_id=152975476]
+visible = false
+position = Vector2(1, -2.2999725)
+scale = Vector2(0.24218749, 0.24879257)
+texture = ExtResource("3_u6f05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=284465383]
+scale = Vector2(0.28235286, 0.28235292)
+sprite_frames = SubResource("SpriteFrames_udjd0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1744312612]
+visible = false
+shape = SubResource("CircleShape2D_dhvi1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1659786690]
+position = Vector2(672, 152)
+texture = ExtResource("3_4jbif")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1085951729]
+
+[node name="TaskListMC" type="MarginContainer" parent="UILayer" unique_id=215958319]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 60
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UILayer/TaskListMC" unique_id=1688226450]
+custom_minimum_size = Vector2(340, 900)
+propagate_maximum_size = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/TaskListMC/ScrollContainer" unique_id=503973298]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="DayLabel" type="Label" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=1335326617]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mondagt 
+(monster monday)"
+autowrap_mode = 2
+
+[node name="Task0" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=132552066 instance=ExtResource("10_s1hkd")]
+layout_mode = 2
+
+[node name="Task1" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=17586819 instance=ExtResource("10_s1hkd")]
+layout_mode = 2
+
+[node name="CountersMC" type="MarginContainer" parent="UILayer" unique_id=165141463]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/CountersMC" unique_id=1746237450]
+custom_maximum_size = Vector2(-1, 80)
+layout_mode = 2
+
+[node name="LikeabilityIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1560225848]
+layout_mode = 2
+texture = ExtResource("11_ohiwn")
+stretch_mode = 5
+
+[node name="LikeabilityLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=983494331]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Likeability: 30%"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UILayer/CountersMC/HBoxContainer" unique_id=810615944]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="NosIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1528811642]
+layout_mode = 2
+texture = ExtResource("11_ohiwn")
+stretch_mode = 5
+
+[node name="NosLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=847900114]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "No's: 0"
+
+[node name="TimerMC" type="MarginContainer" parent="UILayer" unique_id=179588991]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 30
+
+[node name="TimerLabel" type="Label" parent="UILayer/TimerMC" unique_id=1812820398]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.09019608, 1)
+theme_override_font_sizes/font_size = 60
+text = "00s"
+
+[node name="FadeoutLayer" type="CanvasLayer" parent="." unique_id=1113547925]
+
+[node name="ColorRect" type="ColorRect" parent="FadeoutLayer" unique_id=1813560586]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeoutLayer" unique_id=852948969]
+libraries/ = SubResource("AnimationLibrary_ioo1u")
+
+[node name="DayOverLayer" type="CanvasLayer" parent="." unique_id=1149961825]
+visible = false
+script = ExtResource("16_cq7t8")
+
+[node name="PanelContainer" type="PanelContainer" parent="DayOverLayer" unique_id=1478080846]
+custom_minimum_size = Vector2(800, 600)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l2ux7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DayOverLayer/PanelContainer" unique_id=709324661]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1904369498]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 50
+
+[node name="Label" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer/MarginContainer" unique_id=336601211]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "The day is over!"
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1211971729]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="CompletedTasksLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=633715220]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "You've completed: X tasks"
+horizontal_alignment = 1
+
+[node name="LikeabilityLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1393603610]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "So they like you aprox... 10%"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=425185503]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="IncompletedTasksLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=399629071]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "You've let people down: X times"
+horizontal_alignment = 1
+
+[node name="NoLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=560133055]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "So you've won... 2 No's!"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=773032747]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="NextDayButton" type="Button" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1172068430]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Next day!"
+
+[node name="MinigamesWindow" type="Window" parent="." unique_id=1906644560]
+physics_object_picking = true
+oversampling_override = 1.0
+title = "Tasks time!"
+position = Vector2i(0, 36)
+size = Vector2i(1536, 864)
+visible = false
+unresizable = true
+always_on_top = true
+
+[connection signal="timeout" from="TimerMinigames" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="DayOverLayer/PanelContainer/VBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
+
+[editable path="UILayer/TaskListMC/ScrollContainer/VBoxContainer/Task0"]

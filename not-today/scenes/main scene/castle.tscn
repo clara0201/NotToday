@@ -130,16 +130,8 @@ corner_detail = 5
 
 [node name="Node2D" type="Node2D" unique_id=710089954]
 script = ExtResource("1_ohiwn")
+minigames_timer = 20
 tasks_list = Array[ExtResource("2_l2ux7")]([ExtResource("3_cq7t8"), ExtResource("4_ioo1u")])
-
-[node name="MinigamesWindow" type="Window" parent="." unique_id=1906644560]
-oversampling_override = 1.0
-title = "Tasks time!"
-position = Vector2i(0, 36)
-size = Vector2i(1500, 900)
-visible = false
-unresizable = true
-always_on_top = true
 
 [node name="TimerMinigames" type="Timer" parent="." unique_id=907534146]
 one_shot = true
@@ -385,6 +377,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Next day!"
+
+[node name="MinigamesWindow" type="Window" parent="." unique_id=1906644560]
+physics_object_picking = true
+oversampling_override = 1.0
+title = "Tasks time!"
+position = Vector2i(0, 36)
+size = Vector2i(1536, 864)
+visible = false
+unresizable = true
+always_on_top = true
 
 [connection signal="timeout" from="TimerMinigames" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="DayOverLayer/PanelContainer/VBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]

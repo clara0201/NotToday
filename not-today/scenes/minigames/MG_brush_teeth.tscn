@@ -1,29 +1,107 @@
 [gd_scene format=3 uid="uid://dogqo7r731jaw"]
 
 [ext_resource type="Script" uid="uid://d3rpxjnfkkkca" path="res://scripts/mingames/mg_brush_teeth.gd" id="1_wkj1s"]
-[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="2_u6m0o"]
+[ext_resource type="Texture2D" uid="uid://oj04baoe1fbp" path="res://assets/BrushTeethMG/background.png" id="2_u6m0o"]
+[ext_resource type="Texture2D" uid="uid://b75742b0uyh77" path="res://assets/BrushTeethMG/dirt.png" id="4_7bq7i"]
+[ext_resource type="Texture2D" uid="uid://dw456qrh01i4n" path="res://assets/BrushTeethMG/dirt3.png" id="5_5r4jw"]
+[ext_resource type="PackedScene" uid="uid://c82ejor258qks" path="res://scenes/minigames/dirt.tscn" id="5_ueu5i"]
+[ext_resource type="Texture2D" uid="uid://de2nn2tmefd8o" path="res://assets/BrushTeethMG/dirt_long.png" id="6_06hed"]
+[ext_resource type="Texture2D" uid="uid://bxrdwb864w2q8" path="res://assets/BrushTeethMG/guyToothbrush.png" id="7_7bq7i"]
 
 [node name="MgBrushTeeth" type="Node2D" unique_id=216175755]
 script = ExtResource("1_wkj1s")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1179087655]
-modulate = Color(0, 0.3019608, 1, 0.4392157)
-position = Vector2(968, 541.5)
-scale = Vector2(15.046875, 8.3828125)
+[node name="Background" type="Sprite2D" parent="." unique_id=1179087655]
+position = Vector2(768, 432)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_u6m0o")
 
-[node name="Button" type="Button" parent="." unique_id=1900717830]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 916.0
-offset_top = 469.0
-offset_right = 996.0
-offset_bottom = 500.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "CLICK ME"
+[node name="LittleGuy" type="Sprite2D" parent="." unique_id=782374294]
+position = Vector2(927, 908)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_7bq7i")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Button" type="Button" parent="." unique_id=150616686]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Dirts" type="Node" parent="." unique_id=1613681068]
+
+[node name="Dirt" parent="Dirts" unique_id=156005394 node_paths=PackedStringArray("minigame_main") instance=ExtResource("5_ueu5i")]
+position = Vector2(887, 475)
+minigame_main = NodePath("../..")
+
+[node name="CollisionPolygon2D" parent="Dirts/Dirt" index="0" unique_id=1991368641]
+visible = false
+polygon = PackedVector2Array(220, -399, 300, -385, 292, -240, 248, -177, 212, -179, 227, -333, 205, -374)
+
+[node name="Sprite2D" parent="Dirts/Dirt" index="1" unique_id=1720186805]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_06hed")
+
+[node name="Dirt2" parent="Dirts" unique_id=1647055157 node_paths=PackedStringArray("minigame_main") instance=ExtResource("5_ueu5i")]
+position = Vector2(549, 233.00002)
+rotation = 2.6524086
+minigame_main = NodePath("../..")
+
+[node name="CollisionPolygon2D" parent="Dirts/Dirt2" index="0" unique_id=1991368641]
+visible = false
+polygon = PackedVector2Array(203, -353, 261, -345, 253, -205, 207, -150, 184, -158, 200, -298, 180, -336)
+
+[node name="Sprite2D" parent="Dirts/Dirt2" index="1" unique_id=1720186805]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_06hed")
+
+[node name="Dirt3" parent="Dirts" unique_id=1135161727 node_paths=PackedStringArray("minigame_main") instance=ExtResource("5_ueu5i")]
+position = Vector2(787, 580)
+minigame_main = NodePath("../..")
+
+[node name="CollisionPolygon2D" parent="Dirts/Dirt3" index="0" unique_id=1991368641]
+visible = false
+polygon = PackedVector2Array(-469, -378, -450, -404, -371, -410, -292, -358, -314, -321, -332, -291, -398, -264, -450, -329)
+
+[node name="Sprite2D" parent="Dirts/Dirt3" index="1" unique_id=1720186805]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_5r4jw")
+
+[node name="Dirt4" parent="Dirts" unique_id=671195614 node_paths=PackedStringArray("minigame_main") instance=ExtResource("5_ueu5i")]
+position = Vector2(423, 879)
+minigame_main = NodePath("../..")
+
+[node name="CollisionPolygon2D" parent="Dirts/Dirt4" index="0" unique_id=1991368641]
+visible = false
+polygon = PackedVector2Array(597, -326, 603, -282, 556, -240, 512, -262, 519, -310)
+
+[node name="Sprite2D" parent="Dirts/Dirt4" index="1" unique_id=1720186805]
+texture = ExtResource("4_7bq7i")
+
+[node name="Dirt5" parent="Dirts" unique_id=1935781644 node_paths=PackedStringArray("minigame_main") instance=ExtResource("5_ueu5i")]
+position = Vector2(346.99997, 671)
+rotation = 2.2057395
+minigame_main = NodePath("../..")
+
+[node name="CollisionPolygon2D" parent="Dirts/Dirt5" index="0" unique_id=1991368641]
+visible = false
+polygon = PackedVector2Array(-356, -279, -328, -308, -285, -308, -217, -276, -243, -215, -305, -194)
+
+[node name="Sprite2D" parent="Dirts/Dirt5" index="1" unique_id=1720186805]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_5r4jw")
+
+[node name="Dirt6" parent="Dirts" unique_id=1216180226 node_paths=PackedStringArray("minigame_main") instance=ExtResource("5_ueu5i")]
+position = Vector2(283, 456)
+minigame_main = NodePath("../..")
+
+[node name="CollisionPolygon2D" parent="Dirts/Dirt6" index="0" unique_id=1991368641]
+visible = false
+polygon = PackedVector2Array(537, -330, 585, -315, 603, -274, 575, -247, 526, -244, 508, -283)
+
+[node name="Sprite2D" parent="Dirts/Dirt6" index="1" unique_id=1720186805]
+texture = ExtResource("4_7bq7i")
+
+[editable path="Dirts/Dirt"]
+[editable path="Dirts/Dirt2"]
+[editable path="Dirts/Dirt3"]
+[editable path="Dirts/Dirt4"]
+[editable path="Dirts/Dirt5"]
+[editable path="Dirts/Dirt6"]

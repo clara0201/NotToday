@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c82ejor258qks"]
+
+[ext_resource type="Script" uid="uid://c03lc3pal4t4d" path="res://scenes/minigames/dirt.gd" id="1_74ke0"]
+
+[node name="Dirt" type="Area2D" unique_id=156005394]
+priority = 10
+script = ExtResource("1_74ke0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1991368641]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720186805]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
