@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://2ia0rswv1ht0"]
+
+[ext_resource type="Script" uid="uid://jalyvv7xww77" path="res://scripts/mingames/mg_chop_wood.gd" id="1_g2ugy"]
+[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="2_3fpl2"]
+
+[node name="MgChopWood" type="Node2D" unique_id=2135855677]
+script = ExtResource("1_g2ugy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=228308064]
+modulate = Color(0.30980393, 1, 0, 0.3529412)
+position = Vector2(962, 539.5)
+scale = Vector2(15, 8.4296875)
+texture = ExtResource("2_3fpl2")
+
+[node name="Button" type="Button" parent="." unique_id=1121895484]
+offset_left = 1236.0
+offset_top = 162.0
+offset_right = 1370.0
+offset_bottom = 193.0
+text = "NOW CLICK ME!!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
