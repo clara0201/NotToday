@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
 [ext_resource type="PackedScene" uid="uid://b075itcslrm22" path="res://scenes/task_ticket.tscn" id="10_s1hkd"]
 [ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="11_ohiwn"]
+[ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4qgy"]
 radius = 56.0803
@@ -61,6 +62,72 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhvi1"]
 radius = 50.447994
 
+[sub_resource type="Animation" id="Animation_l2ux7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cq7t8"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ioo1u"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioo1u"]
+_data = {
+&"RESET": SubResource("Animation_l2ux7"),
+&"fade_to_black": SubResource("Animation_cq7t8"),
+&"fade_to_normal": SubResource("Animation_ioo1u")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2ux7"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [node name="Node2D" type="Node2D" unique_id=710089954]
 script = ExtResource("1_ohiwn")
 tasks_list = Array[ExtResource("2_l2ux7")]([ExtResource("3_cq7t8"), ExtResource("4_ioo1u")])
@@ -74,11 +141,10 @@ visible = false
 unresizable = true
 always_on_top = true
 
-[node name="Timer" type="Timer" parent="." unique_id=907534146]
+[node name="TimerMinigames" type="Timer" parent="." unique_id=907534146]
 one_shot = true
 
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=948260857]
-visible = false
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions" unique_id=1126242797]
 visible = false
@@ -100,13 +166,11 @@ position = Vector2(630.5, -315.5)
 shape = SubResource("RectangleShape2D_udjd0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2020563840]
-visible = false
 process_callback = 0
 script = ExtResource("1_7r2yl")
 SPEED = 5
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1394335509]
-visible = false
 offset_left = -1920.0
 offset_top = -1080.0
 offset_right = 1920.0
@@ -114,7 +178,6 @@ offset_bottom = 1080.0
 texture = ExtResource("1_u6f05")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=690931745]
-visible = false
 script = ExtResource("2_pi1jp")
 
 [node name="Player Sprite" type="Sprite2D" parent="Player" unique_id=152975476]
@@ -132,37 +195,44 @@ visible = false
 shape = SubResource("CircleShape2D_dhvi1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1659786690]
-visible = false
 position = Vector2(672, 152)
 texture = ExtResource("3_4jbif")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1085951729]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1085951729]
 
-[node name="TaskListMC" type="MarginContainer" parent="CanvasLayer" unique_id=215958319]
+[node name="TaskListMC" type="MarginContainer" parent="UILayer" unique_id=215958319]
 custom_minimum_size = Vector2(300, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 60
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TaskListMC" unique_id=1688226450]
+[node name="ScrollContainer" type="ScrollContainer" parent="UILayer/TaskListMC" unique_id=1688226450]
 custom_minimum_size = Vector2(340, 900)
 propagate_maximum_size = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TaskListMC/ScrollContainer" unique_id=503973298]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/TaskListMC/ScrollContainer" unique_id=503973298]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="Task0" parent="CanvasLayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=132552066 instance=ExtResource("10_s1hkd")]
+[node name="DayLabel" type="Label" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=1335326617]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mondagt 
+(monster monday)"
+autowrap_mode = 2
+
+[node name="Task0" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=132552066 instance=ExtResource("10_s1hkd")]
 layout_mode = 2
 
-[node name="Task1" parent="CanvasLayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=17586819 instance=ExtResource("10_s1hkd")]
+[node name="Task1" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=17586819 instance=ExtResource("10_s1hkd")]
 layout_mode = 2
 
-[node name="CountersMC" type="MarginContainer" parent="CanvasLayer" unique_id=165141463]
+[node name="CountersMC" type="MarginContainer" parent="UILayer" unique_id=165141463]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -172,37 +242,37 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CountersMC" unique_id=1746237450]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/CountersMC" unique_id=1746237450]
 custom_maximum_size = Vector2(-1, 80)
 layout_mode = 2
 
-[node name="LikeabilityIcon" type="TextureRect" parent="CanvasLayer/CountersMC/HBoxContainer" unique_id=1560225848]
+[node name="LikeabilityIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1560225848]
 layout_mode = 2
 texture = ExtResource("11_ohiwn")
 stretch_mode = 5
 
-[node name="LikeabilityLabel" type="Label" parent="CanvasLayer/CountersMC/HBoxContainer" unique_id=983494331]
+[node name="LikeabilityLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=983494331]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Likeability: 30%"
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/CountersMC/HBoxContainer" unique_id=810615944]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UILayer/CountersMC/HBoxContainer" unique_id=810615944]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="NosIcon" type="TextureRect" parent="CanvasLayer/CountersMC/HBoxContainer" unique_id=1528811642]
+[node name="NosIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1528811642]
 layout_mode = 2
 texture = ExtResource("11_ohiwn")
 stretch_mode = 5
 
-[node name="NosLabel" type="Label" parent="CanvasLayer/CountersMC/HBoxContainer" unique_id=847900114]
+[node name="NosLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=847900114]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "No's: 0"
 
-[node name="TimerMC" type="MarginContainer" parent="CanvasLayer" unique_id=179588991]
+[node name="TimerMC" type="MarginContainer" parent="UILayer" unique_id=179588991]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -212,12 +282,111 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 30
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer/TimerMC" unique_id=1812820398]
+[node name="TimerLabel" type="Label" parent="UILayer/TimerMC" unique_id=1812820398]
 visible = false
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.09019608, 1)
 theme_override_font_sizes/font_size = 60
 text = "00s"
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="FadeoutLayer" type="CanvasLayer" parent="." unique_id=1113547925]
 
-[editable path="CanvasLayer/TaskListMC/ScrollContainer/VBoxContainer/Task0"]
+[node name="ColorRect" type="ColorRect" parent="FadeoutLayer" unique_id=1813560586]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeoutLayer" unique_id=852948969]
+libraries/ = SubResource("AnimationLibrary_ioo1u")
+
+[node name="DayOverLayer" type="CanvasLayer" parent="." unique_id=1149961825]
+visible = false
+script = ExtResource("16_cq7t8")
+
+[node name="PanelContainer" type="PanelContainer" parent="DayOverLayer" unique_id=1478080846]
+custom_minimum_size = Vector2(800, 600)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l2ux7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DayOverLayer/PanelContainer" unique_id=709324661]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1904369498]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 50
+
+[node name="Label" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer/MarginContainer" unique_id=336601211]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "The day is over!"
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1211971729]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="CompletedTasksLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=633715220]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "You've completed: X tasks"
+horizontal_alignment = 1
+
+[node name="LikeabilityLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1393603610]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "So they like you aprox... 10%"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=425185503]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="IncompletedTasksLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=399629071]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "You've let people down: X times"
+horizontal_alignment = 1
+
+[node name="NoLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=560133055]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "So you've won... 2 No's!"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=773032747]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="NextDayButton" type="Button" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1172068430]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Next day!"
+
+[connection signal="timeout" from="TimerMinigames" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="DayOverLayer/PanelContainer/VBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
+
+[editable path="UILayer/TaskListMC/ScrollContainer/VBoxContainer/Task0"]

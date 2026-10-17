@@ -2,12 +2,16 @@ extends Node2D
 class_name GameManager
 
 @onready var minigames_window = $MinigamesWindow
-@onready var timer = $Timer
-@onready var likeability_label = $CanvasLayer/CountersMC/HBoxContainer/LikeabilityLabel
-@onready var likeability_icon = $CanvasLayer/CountersMC/HBoxContainer/LikeabilityIcon
-@onready var no_label = $CanvasLayer/CountersMC/HBoxContainer/NosLabel
-@onready var no_icon = $CanvasLayer/CountersMC/HBoxContainer/NosIcon
-@onready var timer_label = $CanvasLayer/TimerMC/TimerLabel
+@onready var timer = $TimerMinigames
+@onready var likeability_label = $UILayer/CountersMC/HBoxContainer/LikeabilityLabel
+@onready var likeability_icon = $UILayer/CountersMC/HBoxContainer/LikeabilityIcon
+@onready var no_label = $UILayer/CountersMC/HBoxContainer/NosLabel
+@onready var no_icon = $UILayer/CountersMC/HBoxContainer/NosIcon
+@onready var timer_label = $UILayer/TimerMC/TimerLabel
+@onready var fadeout_color_rect = $FadeoutLayer/ColorRect
+@onready var animation_player = $FadeoutLayer/AnimationPlayer
+@onready var day_over_layer = $DayOverLayer
+@onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/DayLabel
 
 @export var likeability_percentage = 30
 @export var likeability_loss = 10
@@ -23,8 +27,16 @@ class_name GameManager
 @export var current_task_index = 0
 @export var current_minigame : Minigame
 
+@export var total_days = 3
+
 var current_day = 1
 var in_minigame_phase = false
+
+var day_completed_tasks : int
+var day_incompleted_tasks : int
+var day_won_nos : int
+
+var day_names = ["Mondagt", "Tuesdlof", "Wednasgot"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,6 +56,42 @@ func time_left():
 	var second = int(time_left) % 60
 	return [minute, second]
 
+### DAYS ###
+
+func end_day():
+	fadeout_color_rect.visible = true
+	animation_player.play("fade_to_black")
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	if(current_day < total_days):
+		day_over_layer.visible = true
+		day_over_layer.initialize(day_completed_tasks, day_incompleted_tasks, likeability_percentage, day_won_nos)
+	else:
+		print("final day!!")
+		#TODO final screen
+
+func start_day():
+	day_over_layer.visible = false
+	await get_tree().create_timer(0.5).timeout
+	
+	current_day +=1
+	day_label.text = day_names[current_day-1]
+	
+	day_completed_tasks = 0
+	day_incompleted_tasks = 0
+	day_won_nos = 0
+	
+	tasks_list.clear()
+	
+	animation_player.play("fade_to_normal")
+	
+	#TODO 
+	# - set NPC dialogue?
+	# - move NPCs?
+	# - set Player initial position
+	
+
 ### MINIGAMES ###
 
 func start_minigame_phase():
@@ -61,6 +109,8 @@ func start_minigame_phase():
 	next_minigame()
 
 func finish_minigame_phase():	
+	timer.stop()
+	
 	for task in tasks_list:
 		if not task.completed:
 			on_minigame_not_completed(task)
@@ -72,7 +122,7 @@ func finish_minigame_phase():
 	
 	minigames_window.hide()
 	
-	#TODO start second day
+	end_day()
 
 func next_minigame():	
 	if(current_task_index >= tasks_list.size()):
@@ -92,20 +142,26 @@ func next_minigame():
 	current_minigame.start_minigame()
 
 func on_minigame_not_completed(task: TaskResource) -> void:
+	day_incompleted_tasks += 1
+	
 	progress_to_no += 1
 	if(progress_to_no == no_threshold):
 		no_counter += 1
+		day_won_nos += 1
 		progress_to_no  = 0
 	
 	likeability_percentage =- likeability_loss
 	tasks_list[current_task_index].completed = false
 
 func on_minigame_completed() -> void:
+	day_completed_tasks += 1
+	
 	likeability_percentage += likeability_gain
 	tasks_list[current_task_index].completed = true
 	
 	update_displays()
 	
+	#TODO check this bc its doing weird stuff
 	if is_instance_valid(current_minigame):
 		current_minigame.queue_free()
 		current_minigame = null
@@ -122,3 +178,6 @@ func update_displays() -> void:
 
 func _on_timer_timeout() -> void:
 	finish_minigame_phase()
+
+func _on_next_day_button_pressed() -> void:
+	start_day()
