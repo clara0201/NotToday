@@ -15,7 +15,7 @@ var annoying_flag = false
 func _ready():	
 	# Changes only the arrow shape of the cursor.
 	# This is similar to changing it in the project settings.
-	#Input.set_custom_mouse_cursor(arrow)
+	Input.set_custom_mouse_cursor(arrow)
 	
 	dirt_counter = dirts.get_children().size()
 
