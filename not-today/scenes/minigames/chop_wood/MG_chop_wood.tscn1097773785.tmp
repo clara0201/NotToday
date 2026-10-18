@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://2ia0rswv1ht0"]
+
+[ext_resource type="Script" uid="uid://jalyvv7xww77" path="res://scripts/mingames/mg_chop_wood.gd" id="1_g2ugy"]
+[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="2_3fpl2"]
+[ext_resource type="Texture2D" uid="uid://oj04baoe1fbp" path="res://assets/BrushTeethMG/background.png" id="2_gx6im"]
+[ext_resource type="Texture2D" uid="uid://rnyulvpylly2" path="res://assets/BrushTeethMG/toothbrush_crop.png" id="4_7vnlc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(136.71687, 133.46732)
+
+[node name="MgChopWood" type="Node2D" unique_id=2135855677]
+script = ExtResource("1_g2ugy")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1195371458]
+modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(768, 432)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_gx6im")
+
+[node name="WoodTrunk" type="Sprite2D" parent="." unique_id=1633755099]
+position = Vector2(739.99994, 641.99994)
+scale = Vector2(2.1796875, 3.109375)
+texture = ExtResource("2_3fpl2")
+
+[node name="Area2D" type="Area2D" parent="WoodTrunk" unique_id=1293863553]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodTrunk/Area2D" unique_id=149797392]
+position = Vector2(-0.9175415, 0.16079712)
+scale = Vector2(1.0000001, 1.0000002)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Axe" type="Sprite2D" parent="." unique_id=1642920678]
+position = Vector2(1354, 136.00003)
+rotation = -0.62338865
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_7vnlc")
+
+[node name="Area2D" type="Area2D" parent="Axe" unique_id=1640503115]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Axe/Area2D" unique_id=439471930]
+rotation = -0.08544612
+polygon = PackedVector2Array(0.18029785, 2.3500977, -75.9281, 11.734619, -161.75269, -197.98279, 3.6697998, -260.31592, 59.850708, -67.236084)

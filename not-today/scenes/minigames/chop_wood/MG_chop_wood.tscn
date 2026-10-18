@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://2ia0rswv1ht0"]
+
+[ext_resource type="Script" uid="uid://jalyvv7xww77" path="res://scripts/mingames/mg_chop_wood.gd" id="1_g2ugy"]
+[ext_resource type="Texture2D" uid="uid://dg787f6vcg65j" path="res://assets/ChopWoodMG/backgroudn.png" id="2_jx0te"]
+[ext_resource type="Texture2D" uid="uid://bg1otcms46ovy" path="res://assets/ChopWoodMG/base.png" id="3_jx0te"]
+[ext_resource type="Texture2D" uid="uid://dpo8nfakhqya1" path="res://assets/ChopWoodMG/axe.png" id="4_gx6im"]
+[ext_resource type="Texture2D" uid="uid://r6x8uhnyy7y8" path="res://assets/ChopWoodMG/wood.png" id="4_rc6si"]
+[ext_resource type="Texture2D" uid="uid://dpn10qr3bsbbh" path="res://assets/ChopWoodMG/chop.png" id="5_i6l3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(163.94266, 61.33333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
+size = Vector2(180.27246, 39.33336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(1566, 64)
+
+[node name="MgChopWood" type="Node2D" unique_id=2135855677]
+script = ExtResource("1_g2ugy")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1195371458]
+position = Vector2(768, 432)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_jx0te")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=407566379]
+position = Vector2(784, 734)
+texture = ExtResource("3_jx0te")
+
+[node name="WoodTrunk" type="Sprite2D" parent="." unique_id=1633755099]
+position = Vector2(749.00006, 598)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_rc6si")
+
+[node name="Area2D" type="Area2D" parent="WoodTrunk" unique_id=1293863553]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodTrunk/Area2D" unique_id=149797392]
+position = Vector2(12.695343, -45.99997)
+scale = Vector2(1.0000002, 1.0000004)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Bottom" type="Area2D" parent="WoodTrunk" unique_id=1354765250]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodTrunk/Bottom" unique_id=1152586965]
+position = Vector2(13.333353, 88.00003)
+scale = Vector2(1.0000002, 1.0000004)
+shape = SubResource("RectangleShape2D_b1lj4")
+
+[node name="LeftLimit" type="Node2D" parent="." unique_id=708363903]
+position = Vector2(148, 79)
+
+[node name="RightLimit" type="Node2D" parent="." unique_id=418065828]
+position = Vector2(1364, 81)
+
+[node name="Bottom" type="Area2D" parent="." unique_id=1662756244]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom" unique_id=1488799010]
+position = Vector2(765, 840)
+shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="WoodChopped" type="Sprite2D" parent="." unique_id=240097254]
+visible = false
+position = Vector2(773, 630)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_i6l3t")
+
+[node name="Axe" type="Sprite2D" parent="." unique_id=1642920678]
+position = Vector2(1354, 136.00003)
+texture = ExtResource("4_gx6im")
+
+[node name="Area2D" type="Area2D" parent="Axe" unique_id=1640503115]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Axe/Area2D" unique_id=439471930]
+rotation = -0.08544612
+polygon = PackedVector2Array(22.662231, 40.080246, 77.63013, 7.6530304, 106.54797, -72.1703, -7.580078, -134.1363, -77.461426, -44.774094)
+
+[connection signal="area_entered" from="Axe/Area2D" to="." method="_on_axe_area_2d_area_entered"]

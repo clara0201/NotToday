@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TaskResource" format=3 uid="uid://evna4chduf8e"]
 
-[ext_resource type="PackedScene" uid="uid://2ia0rswv1ht0" path="res://scenes/minigames/MG_chop_wood.tscn" id="1_c5xb0"]
+[ext_resource type="PackedScene" uid="uid://2ia0rswv1ht0" path="res://scenes/minigames/chop_wood/MG_chop_wood.tscn" id="1_c5xb0"]
 [ext_resource type="Script" uid="uid://e2byqvdy5qq2" path="res://scripts/resources/task_resource.gd" id="1_kkyms"]
 
 [resource]

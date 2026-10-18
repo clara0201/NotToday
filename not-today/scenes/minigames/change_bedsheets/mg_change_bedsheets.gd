@@ -43,7 +43,7 @@ func _on_top_area_2d_area_entered(area: Area2D) -> void:
 	if(area == goal_bottom):
 		old_bedsheet.visible = false
 		is_dragging = false
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		get_new_bedsheets()
 
 func _on_new_bedsheet_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
