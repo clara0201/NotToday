@@ -2,46 +2,49 @@
 
 [ext_resource type="Script" uid="uid://cmit5y0foqoys" path="res://scenes/npc.gd" id="1_abqhh"]
 [ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="2_7n8xq"]
-[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="2_rv78h"]
 [ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="3_4wlns"]
+[ext_resource type="Texture2D" uid="uid://drfvc2l4458pa" path="res://assets/npcArt/微信图片_20261017191725_165_1.png" id="4_7n8xq"]
 
 [sub_resource type="Resource" id="Resource_ioo1u"]
 script = ExtResource("3_4wlns")
 display_name = "The King"
 metadata/_custom_type_script = "uid://c0meiq6b4xavc"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dhvi1"]
-radius = 194.74342
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4qgy"]
-size = Vector2(113, 118)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rv78h")
+"texture": ExtResource("4_7n8xq")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhvi1"]
+radius = 472.69547
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4qgy"]
+size = Vector2(498, 417)
+
 [node name="Npc" type="CharacterBody2D" unique_id=1548409686]
 script = ExtResource("1_abqhh")
 npc_data = SubResource("Resource_ioo1u")
 
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1643659522]
+position = Vector2(-12, -290)
+scale = Vector2(0.28790322, 0.28790322)
+sprite_frames = SubResource("SpriteFrames_udjd0")
+
 [node name="InteractionZone" type="Area2D" parent="." unique_id=694135213]
 
 [node name="InteractionShape" type="CollisionShape2D" parent="InteractionZone" unique_id=1861492836]
+position = Vector2(3, -106)
 shape = SubResource("CircleShape2D_dhvi1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=886421645]
-position = Vector2(-1.5, -1)
+position = Vector2(-1, -150.5)
 shape = SubResource("RectangleShape2D_g4qgy")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1643659522]
-sprite_frames = SubResource("SpriteFrames_udjd0")
 
 [node name="InteractionPrompt" type="Label" parent="." unique_id=1951135575]
 modulate = Color(0.96605235, 0.9660521, 5.390644e-06, 1)

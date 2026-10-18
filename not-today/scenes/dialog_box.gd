@@ -17,6 +17,8 @@ var _current_tween: Tween = null
 @onready var _speaker_label: Label = $PanelContainer/MarginContainer/VBoxContainer/SpeakerLabel
 @onready var _text_label: RichTextLabel = $PanelContainer/MarginContainer/VBoxContainer/TextLabel
 @onready var _choice_container: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/ChoiceContainer
+@onready var _main: = $".."
+
 
 func _ready() -> void:
 	_panel.visible = false
@@ -111,7 +113,7 @@ func _show_choices(choices: Array[String]) -> void:
 	_choice_container.visible = true
 
 	for i in choices.size():
-		if choices[i] == "No":
+		if choices[i] == "No" && _main.no_counter < 1:
 			break
 		var button := Button.new()
 		button.text = choices[i]

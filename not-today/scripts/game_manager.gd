@@ -186,6 +186,8 @@ func _on_timer_timeout() -> void:
 func _on_next_day_button_pressed() -> void:
 	start_day()
 
+
+
 func _on_npc_interacted(npc: NPC) -> void:
 	print("start_interaction")
 
