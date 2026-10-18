@@ -11,8 +11,12 @@ class_name GameManager
 @onready var fadeout_color_rect = $FadeoutLayer/ColorRect
 @onready var animation_player = $FadeoutLayer/AnimationPlayer
 @onready var day_over_layer = $DayOverLayer
-@onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/DayLabel
+@onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/MarginContainer/DayLabel
 @onready var end_layer = $EndingLayer
+@onready var task_container = $UILayer/TaskListMC/ScrollContainer/VBoxContainer
+
+@onready var npc_group = $npc_group
+@onready var _dialogue_box: CanvasLayer = $DialogueBox
 
 @export var likeability_percentage = 30
 @export var likeability_loss = 10
@@ -30,6 +34,8 @@ class_name GameManager
 
 @export var total_days = 3
 
+var ticket_scene = preload("res://scenes/task_ticket.tscn")
+
 var current_day = 1
 var in_minigame_phase = false
 
@@ -41,7 +47,9 @@ var day_names = ["Mondagt", "Tuesdlof", "Wednasgot"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	# Connect NPC interaction signals
+	for npc in npc_group.get_children():
+		npc.interacted.connect(_on_npc_interacted)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -174,6 +182,14 @@ func update_displays() -> void:
 	no_label.text = "No's: " + str(no_counter)
 
 
+### TASKS ###
+
+func create_task(task_data : TaskResource):
+	var task = ticket_scene.instantiate() as TaskTicket
+	task.init_data(task_data)
+	task_container.add_child(task)
+
+
 ### SIGNALS ###
 
 func _on_timer_timeout() -> void:
@@ -181,3 +197,19 @@ func _on_timer_timeout() -> void:
 
 func _on_next_day_button_pressed() -> void:
 	start_day()
+
+
+
+func _on_npc_interacted(npc: NPC) -> void:
+	print("start_interaction")
+
+	print(npc.npc_data.to_string() + "\n")
+	if npc.npc_data and not npc.npc_data.dialogue.is_empty():
+		print(npc.npc_data.to_string() + "\n")
+		_dialogue_box.start_dialogue(npc.npc_data.dialogue)
+		npc._interaction_prompt.visible = false
+		npc._has_talked = true
+
+
+func _on_dialogue_finished() -> void:
+	pass

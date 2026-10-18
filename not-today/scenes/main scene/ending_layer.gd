@@ -22,8 +22,6 @@ func _input(event: InputEvent) -> void:
 		next_slide()
 
 func next_slide():
-	
-	print(index)
 	match index:
 		2:
 			king.visible = true
@@ -33,4 +31,5 @@ func next_slide():
 			steward.visible = true
 		5:
 			final.visible = true
+	await get_tree().create_timer(0.5).timeout
 	index += 1
