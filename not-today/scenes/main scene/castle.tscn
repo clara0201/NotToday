@@ -405,6 +405,10 @@ always_on_top = true
 stream = ExtResource("18_4aumm")
 autoplay = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1489318976]
+stream = ExtResource("18_4aumm")
+autoplay = true
+
 [node name="EndingLayer" parent="." unique_id=1683281122 instance=ExtResource("22_fm11v")]
 visible = false
 

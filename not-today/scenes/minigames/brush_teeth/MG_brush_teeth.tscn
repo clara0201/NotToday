@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c82ejor258qks" path="res://scenes/minigames/brush_teeth/dirt.tscn" id="5_ueu5i"]
 [ext_resource type="Texture2D" uid="uid://de2nn2tmefd8o" path="res://assets/BrushTeethMG/dirt_long.png" id="6_06hed"]
 [ext_resource type="Texture2D" uid="uid://bxrdwb864w2q8" path="res://assets/BrushTeethMG/guyToothbrush.png" id="7_7bq7i"]
+[ext_resource type="AudioStream" uid="uid://du4pu537g4cqr" path="res://assets/Sounds/Brushing Teeth_1.mp3" id="8_ijedr"]
 
 [node name="MgBrushTeeth" type="Node2D" unique_id=216175755]
 script = ExtResource("1_wkj1s")
@@ -98,6 +99,9 @@ polygon = PackedVector2Array(537, -330, 585, -315, 603, -274, 575, -247, 526, -2
 
 [node name="Sprite2D" parent="Dirts/Dirt6" index="1" unique_id=1720186805]
 texture = ExtResource("4_7bq7i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1544911185]
+stream = ExtResource("8_ijedr")
 
 [editable path="Dirts/Dirt"]
 [editable path="Dirts/Dirt2"]
