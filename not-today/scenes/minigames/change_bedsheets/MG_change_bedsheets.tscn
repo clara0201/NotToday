@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dki7tnpfyr3to"]
+
+[ext_resource type="Texture2D" uid="uid://oj04baoe1fbp" path="res://assets/BrushTeethMG/background.png" id="1_aw8ph"]
+[ext_resource type="Script" uid="uid://c7gwle3qb3f04" path="res://scenes/minigames/change_bedsheets/mg_change_bedsheets.gd" id="1_y4b04"]
+[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="2_y4b04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
+size = Vector2(738, 628)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi6ju"]
+size = Vector2(132.10025, 28.562002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njqwk"]
+size = Vector2(1557, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(1004, 176)
+
+[node name="MgChangeBedsheets" type="Node2D" unique_id=1579904543]
+script = ExtResource("1_y4b04")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=897879177]
+modulate = Color(1, 1, 1, 0.19215687)
+position = Vector2(768, 432)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_aw8ph")
+
+[node name="OldBedsheetsSprite2D" type="Sprite2D" parent="." unique_id=1587496867]
+position = Vector2(750, 468)
+scale = Vector2(5.609375, 4.7265625)
+texture = ExtResource("2_y4b04")
+
+[node name="BedsheetArea2D" type="Area2D" parent="OldBedsheetsSprite2D" unique_id=1925066480]
+scale = Vector2(0.17827299, 0.21157026)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OldBedsheetsSprite2D/BedsheetArea2D" unique_id=224642704]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_b1lj4")
+
+[node name="TopArea2D" type="Area2D" parent="OldBedsheetsSprite2D" unique_id=1455621557]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OldBedsheetsSprite2D/TopArea2D" unique_id=691183909]
+position = Vector2(0.26741028, -51.940517)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("RectangleShape2D_wi6ju")
+
+[node name="GoalBottomArea2D" type="Area2D" parent="." unique_id=312376157]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalBottomArea2D" unique_id=100166150]
+position = Vector2(765, 826.5)
+shape = SubResource("RectangleShape2D_njqwk")
+
+[node name="NewBedsheetsSprite2D" type="Sprite2D" parent="." unique_id=369792801]
+visible = false
+position = Vector2(746.99994, 1055)
+scale = Vector2(5.609375, 4.7265625)
+texture = ExtResource("2_y4b04")
+
+[node name="BedsheetArea2D" type="Area2D" parent="NewBedsheetsSprite2D" unique_id=1665966325]
+scale = Vector2(0.17827299, 0.21157026)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NewBedsheetsSprite2D/BedsheetArea2D" unique_id=1151779735]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_b1lj4")
+
+[node name="NewTopArea2D" type="Area2D" parent="NewBedsheetsSprite2D" unique_id=1686129881]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NewBedsheetsSprite2D/NewTopArea2D" unique_id=1804223172]
+position = Vector2(0.26741028, -51.940517)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("RectangleShape2D_wi6ju")
+
+[node name="LaundryBasket" type="Node2D" parent="." unique_id=268411053]
+position = Vector2(799, 1862)
+
+[node name="GoalTopArea2D" type="Area2D" parent="." unique_id=394461854]
+position = Vector2(762, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalTopArea2D" unique_id=1597835182]
+position = Vector2(-5, -5)
+shape = SubResource("RectangleShape2D_13qdw")
+
+[connection signal="input_event" from="OldBedsheetsSprite2D/BedsheetArea2D" to="." method="_on_bedsheet_area_2d_input_event"]
+[connection signal="area_entered" from="OldBedsheetsSprite2D/TopArea2D" to="." method="_on_top_area_2d_area_entered"]
+[connection signal="input_event" from="NewBedsheetsSprite2D/BedsheetArea2D" to="." method="_on_new_bedsheet_area_2d_input_event"]
+[connection signal="area_entered" from="NewBedsheetsSprite2D/NewTopArea2D" to="." method="_on_new_top_area_2d_area_entered"]

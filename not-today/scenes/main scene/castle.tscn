@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://so1j5nlhx12i" path="res://data/task_brush_teeth.tres" id="3_cq7t8"]
 [ext_resource type="Texture2D" uid="uid://i8ojs5t3c053" path="res://scenes/main scene/SpriteTemp.png" id="3_u6f05"]
 [ext_resource type="Texture2D" uid="uid://dc35p2r1bv2dm" path="res://scenes/main scene/SpriteTemp01 - Copy.png" id="4_4jbif"]
-[ext_resource type="Resource" uid="uid://evna4chduf8e" path="res://data/task_chop_wood.tres" id="4_ioo1u"]
+[ext_resource type="Resource" uid="uid://cxkgyid66x4ok" path="res://data/task_change_bedsheets.tres" id="4_cq7t8"]
 [ext_resource type="Texture2D" uid="uid://dft5udjgu727a" path="res://scenes/main scene/SpriteTemp02 - Copy.png" id="5_s1hkd"]
 [ext_resource type="Texture2D" uid="uid://dt2gmywqqt0q7" path="res://scenes/main scene/SpriteTemp02.png" id="6_ohiwn"]
 [ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
@@ -131,7 +131,7 @@ corner_detail = 5
 [node name="Node2D" type="Node2D" unique_id=710089954]
 script = ExtResource("1_ohiwn")
 minigames_timer = 20
-tasks_list = Array[ExtResource("2_l2ux7")]([ExtResource("3_cq7t8"), ExtResource("4_ioo1u")])
+tasks_list = Array[ExtResource("2_l2ux7")]([ExtResource("3_cq7t8"), ExtResource("4_cq7t8")])
 
 [node name="TimerMinigames" type="Timer" parent="." unique_id=907534146]
 one_shot = true
