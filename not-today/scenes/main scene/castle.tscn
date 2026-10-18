@@ -14,11 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://baohc2252qpn6" path="res://assets/PlayerSprite/Player0.png" id="10_4aumm"]
 [ext_resource type="PackedScene" uid="uid://b075itcslrm22" path="res://scenes/task_ticket.tscn" id="10_s1hkd"]
 [ext_resource type="Texture2D" uid="uid://b2cg1hmxqffo8" path="res://assets/PlayerSprite/Player1.png" id="11_c4ji0"]
-[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="11_ohiwn"]
 [ext_resource type="Texture2D" uid="uid://h5wa4igg0gs2" path="res://assets/PlayerSprite/Player2.png" id="12_4yhv7"]
 [ext_resource type="Texture2D" uid="uid://gt6vw3ejfo8j" path="res://assets/PlayerSprite/Player3.png" id="13_7788p"]
 [ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
+[ext_resource type="Texture2D" uid="uid://cevha1k62pp4s" path="res://assets/UI/fire.png" id="17_7788p"]
 [ext_resource type="AudioStream" uid="uid://bjyst100cp018" path="res://assets/Sounds/BackgroundMusic_Holy Forest.wav" id="18_4aumm"]
+[ext_resource type="Texture2D" uid="uid://dmt8ik45lvum7" path="res://assets/UI/!heart.png" id="18_fm11v"]
+[ext_resource type="Texture2D" uid="uid://b1npg5vy374ar" path="res://assets/UI/thought bubble.png" id="19_4yhv7"]
+[ext_resource type="PackedScene" uid="uid://5fif3d2gqhwb" path="res://scenes/main scene/ending_layer.tscn" id="22_fm11v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_udjd0"]
 radius = 188.09572
@@ -133,18 +136,6 @@ _data = {
 &"fade_to_black": SubResource("Animation_cq7t8"),
 &"fade_to_normal": SubResource("Animation_ioo1u")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2ux7"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
 
 [node name="Node2D" type="Node2D" unique_id=710089954]
 script = ExtResource("1_ohiwn")
@@ -265,7 +256,8 @@ layout_mode = 2
 
 [node name="LikeabilityIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1560225848]
 layout_mode = 2
-texture = ExtResource("11_ohiwn")
+texture = ExtResource("17_7788p")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="LikeabilityLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=983494331]
@@ -280,7 +272,8 @@ layout_mode = 2
 
 [node name="NosIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1528811642]
 layout_mode = 2
-texture = ExtResource("11_ohiwn")
+texture = ExtResource("18_fm11v")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="NosLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=847900114]
@@ -326,78 +319,73 @@ libraries/ = SubResource("AnimationLibrary_ioo1u")
 visible = false
 script = ExtResource("16_cq7t8")
 
-[node name="PanelContainer" type="PanelContainer" parent="DayOverLayer" unique_id=1478080846]
-custom_minimum_size = Vector2(800, 600)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l2ux7")
+[node name="TextureRect" type="TextureRect" parent="DayOverLayer" unique_id=545338957]
+offset_left = -74.99999
+offset_right = 2485.0
+offset_bottom = 1440.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("19_4yhv7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DayOverLayer/PanelContainer" unique_id=709324661]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="DayOverLayer" unique_id=709324661]
+offset_left = 560.0
+offset_top = 240.0
+offset_right = 1360.0
+offset_bottom = 840.0
 
-[node name="MarginContainer" type="MarginContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1904369498]
+[node name="MarginContainer" type="MarginContainer" parent="DayOverLayer/VBoxContainer" unique_id=1904369498]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/margin_top = 50
 
-[node name="Label" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer/MarginContainer" unique_id=336601211]
+[node name="Label" type="Label" parent="DayOverLayer/VBoxContainer/MarginContainer" unique_id=336601211]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "The day is over!"
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1211971729]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="DayOverLayer/VBoxContainer" unique_id=1211971729]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="CompletedTasksLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=633715220]
+[node name="CompletedTasksLabel" type="Label" parent="DayOverLayer/VBoxContainer" unique_id=633715220]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "You've completed: X tasks"
 horizontal_alignment = 1
 
-[node name="LikeabilityLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1393603610]
+[node name="LikeabilityLabel" type="Label" parent="DayOverLayer/VBoxContainer" unique_id=1393603610]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "So they like you aprox... 10%"
 horizontal_alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=425185503]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="DayOverLayer/VBoxContainer" unique_id=425185503]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="IncompletedTasksLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=399629071]
+[node name="IncompletedTasksLabel" type="Label" parent="DayOverLayer/VBoxContainer" unique_id=399629071]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "You've let people down: X times"
 horizontal_alignment = 1
 
-[node name="NoLabel" type="Label" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=560133055]
+[node name="NoLabel" type="Label" parent="DayOverLayer/VBoxContainer" unique_id=560133055]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "So you've won... 2 No's!"
 horizontal_alignment = 1
 
-[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=773032747]
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="DayOverLayer/VBoxContainer" unique_id=773032747]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="NextDayButton" type="Button" parent="DayOverLayer/PanelContainer/VBoxContainer" unique_id=1172068430]
+[node name="NextDayButton" type="Button" parent="DayOverLayer/VBoxContainer" unique_id=1172068430]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
@@ -422,7 +410,10 @@ stream = ExtResource("18_4aumm")
 volume_db = -6.386
 autoplay = true
 
+[node name="EndingLayer" parent="." unique_id=1683281122 instance=ExtResource("22_fm11v")]
+visible = false
+
 [connection signal="timeout" from="TimerMinigames" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="DayOverLayer/PanelContainer/VBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
+[connection signal="pressed" from="DayOverLayer/VBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
 
 [editable path="UILayer/TaskListMC/ScrollContainer/VBoxContainer/Task0"]
