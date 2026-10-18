@@ -52,6 +52,7 @@ func _on_axe_area_2d_area_entered(area: Area2D) -> void:
 	if(area == wood_area):
 		wood.visible = false
 		wood_chopped.visible = true
+		$AudioStreamPlayer.play()
 	
 	elif(area == wood_area_bottom):
 		moving = false

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dn8gqc3gm0240" path="res://assets/BedsheetsMG/background.png" id="2_nwpby"]
 [ext_resource type="Texture2D" uid="uid://c358w3u7nbf1q" path="res://assets/BedsheetsMG/old_bs.png" id="3_d8suj"]
 [ext_resource type="Texture2D" uid="uid://8bbo6vjdl84c" path="res://assets/BedsheetsMG/clean_bs.png" id="4_bvfec"]
+[ext_resource type="AudioStream" uid="uid://de2xgiadlc1fu" path="res://assets/Sounds/Changing Sheets_short.wav" id="5_d8suj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1lj4"]
 size = Vector2(4964.297, 3552.7993)
@@ -80,6 +81,10 @@ position = Vector2(762, 224)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalTopArea2D" unique_id=1597835182]
 position = Vector2(-22, 85)
 shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=404206312]
+stream = ExtResource("5_d8suj")
+volume_db = 24.0
 
 [connection signal="input_event" from="OldBedsheetsSprite2D/BedsheetArea2D" to="." method="_on_bedsheet_area_2d_input_event"]
 [connection signal="area_entered" from="OldBedsheetsSprite2D/TopArea2D" to="." method="_on_top_area_2d_area_entered"]

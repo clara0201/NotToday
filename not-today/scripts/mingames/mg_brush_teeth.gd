@@ -9,6 +9,7 @@ var game_manager
 var arrow = load("res://assets/BrushTeethMG/toothbrush_crop.png")
 var cleaned_list : Array[Dirt]
 var dirt_counter : int
+var sound = "res://assets/Sounds/Brushing Teeth_1.mp3"
 
 var annoying_flag = false
 
@@ -18,6 +19,8 @@ func _ready():
 	Input.set_custom_mouse_cursor(arrow)
 	
 	dirt_counter = dirts.get_children().size()
+	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,7 +36,8 @@ func clean_dirt(dirt: Dirt):
 	if(cleaned_list.find(dirt) == -1):
 		cleaned_list.append(dirt)
 		dirt.queue_free()
-		
+		$AudioStreamPlayer.play()
+
 		if(cleaned_list.size() == dirt_counter && m.try_lock()):
 			Input.set_custom_mouse_cursor(null)
 			finish_minigame()
