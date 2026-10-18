@@ -9,4 +9,5 @@ func start_minigame() -> void:
 	push_error("start_minigame() not implemented!")
 
 func finish_minigame():
+	print("finished!")
 	minigame_completed.emit()

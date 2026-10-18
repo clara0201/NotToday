@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://oj04baoe1fbp" path="res://assets/BrushTeethMG/background.png" id="2_u6m0o"]
 [ext_resource type="Texture2D" uid="uid://b75742b0uyh77" path="res://assets/BrushTeethMG/dirt.png" id="4_7bq7i"]
 [ext_resource type="Texture2D" uid="uid://dw456qrh01i4n" path="res://assets/BrushTeethMG/dirt3.png" id="5_5r4jw"]
-[ext_resource type="PackedScene" uid="uid://c82ejor258qks" path="res://scenes/minigames/dirt.tscn" id="5_ueu5i"]
+[ext_resource type="PackedScene" uid="uid://c82ejor258qks" path="res://scenes/minigames/brush_teeth/dirt.tscn" id="5_ueu5i"]
 [ext_resource type="Texture2D" uid="uid://de2nn2tmefd8o" path="res://assets/BrushTeethMG/dirt_long.png" id="6_06hed"]
 [ext_resource type="Texture2D" uid="uid://bxrdwb864w2q8" path="res://assets/BrushTeethMG/guyToothbrush.png" id="7_7bq7i"]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c82ejor258qks"]
 
-[ext_resource type="Script" uid="uid://c03lc3pal4t4d" path="res://scenes/minigames/dirt.gd" id="1_74ke0"]
+[ext_resource type="Script" uid="uid://c03lc3pal4t4d" path="res://scenes/minigames/brush_teeth/dirt.gd" id="1_74ke0"]
 
 [node name="Dirt" type="Area2D" unique_id=156005394]
 priority = 10
