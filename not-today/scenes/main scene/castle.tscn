@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dt2gmywqqt0q7" path="res://scenes/main scene/SpriteTemp02.png" id="6_ohiwn"]
 [ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
 [ext_resource type="PackedScene" uid="uid://b075itcslrm22" path="res://scenes/task_ticket.tscn" id="10_s1hkd"]
-[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="11_ohiwn"]
+[ext_resource type="Texture2D" uid="uid://sgcyoflyh6ka" path="res://assets/UI/300540b56db6a5bf249b7cf74f9ef252 1.png" id="16_4aumm"]
 [ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
+[ext_resource type="Texture2D" uid="uid://bagfl6u24t0jo" path="res://assets/UI/300540b56db6a5bf249b7cf74f9ef252 2.png" id="17_c4ji0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4qgy"]
 radius = 56.0803
@@ -241,7 +242,8 @@ layout_mode = 2
 
 [node name="LikeabilityIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1560225848]
 layout_mode = 2
-texture = ExtResource("11_ohiwn")
+texture = ExtResource("16_4aumm")
+expand_mode = 2
 stretch_mode = 5
 
 [node name="LikeabilityLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=983494331]
@@ -256,7 +258,8 @@ layout_mode = 2
 
 [node name="NosIcon" type="TextureRect" parent="UILayer/CountersMC/HBoxContainer" unique_id=1528811642]
 layout_mode = 2
-texture = ExtResource("11_ohiwn")
+texture = ExtResource("17_c4ji0")
+expand_mode = 2
 stretch_mode = 5
 
 [node name="NosLabel" type="Label" parent="UILayer/CountersMC/HBoxContainer" unique_id=847900114]
