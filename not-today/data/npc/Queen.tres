@@ -3,9 +3,34 @@
 [ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="1_7v32l"]
 [ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="2_7q32w"]
 [ext_resource type="Resource" uid="uid://cxkgyid66x4ok" path="res://data/task_change_bedsheets.tres" id="3_7q32w"]
+[ext_resource type="Texture2D" uid="uid://cmubdqxa5tk6q" path="res://assets/NPCs/Queen.png" id="3_jl785"]
+
+[sub_resource type="Resource" id="Resource_0fnv7"]
+script = ExtResource("1_7v32l")
+text = "Hello, dear"
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="Resource" id="Resource_j5bvx"]
+script = ExtResource("1_7v32l")
+text = "Would you change the bedsheets? There's a hair."
+choices = Array[String](["Yes", "No"])
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jl785"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jl785")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("2_7q32w")
 display_name = "Queen"
+sprite_frames = SubResource("SpriteFrames_jl785")
+dialogue = Array[ExtResource("1_7v32l")]([SubResource("Resource_0fnv7"), SubResource("Resource_j5bvx")])
 task = ExtResource("3_7q32w")
 metadata/_custom_type_script = "uid://c0meiq6b4xavc"

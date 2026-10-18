@@ -203,7 +203,6 @@ func create_task(task_data : TaskResource):
 	
 	task_container.add_child(task)
 	task.init_data(task_data)
-	
 
 
 ### SIGNALS ###
@@ -214,18 +213,11 @@ func _on_timer_timeout() -> void:
 func _on_next_day_button_pressed() -> void:
 	start_day()
 
-
-
-func _on_npc_interacted(npc: NPC) -> void:
-	print("start_interaction")
-
-	print(npc.npc_data.to_string() + "\n")
+func _on_npc_interacted(npc: NPCController) -> void:
 	if npc.npc_data and not npc.npc_data.dialogue.is_empty():
-		print(npc.npc_data.to_string() + "\n")
 		_dialogue_box.start_dialogue(npc.npc_data.dialogue, npc)
 		npc._interaction_prompt.visible = false
 		npc._has_talked = true
-
 
 func _on_dialogue_finished() -> void:
 	pass

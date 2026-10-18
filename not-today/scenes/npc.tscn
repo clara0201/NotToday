@@ -1,17 +1,45 @@
 [gd_scene format=3 uid="uid://bg7wn8rka1eih"]
 
-[ext_resource type="Script" uid="uid://cmit5y0foqoys" path="res://scenes/npc.gd" id="1_abqhh"]
-[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="2_7n8xq"]
-[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="3_4wlns"]
+[ext_resource type="Script" uid="uid://cmit5y0foqoys" path="res://scenes/npc_controller.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://brd7u8s57dmcf" path="res://assets/NPCs/KingSprite.png" id="4_7n8xq"]
-
-[sub_resource type="Resource" id="Resource_ioo1u"]
-script = ExtResource("3_4wlns")
-display_name = "The King"
-metadata/_custom_type_script = "uid://c0meiq6b4xavc"
+[ext_resource type="Texture2D" uid="uid://bohh3jk5tbqy" path="res://assets/NPCs/Jester.png" id="4_hwkja"]
+[ext_resource type="Texture2D" uid="uid://cmubdqxa5tk6q" path="res://assets/NPCs/Queen.png" id="6_0tygy"]
+[ext_resource type="Texture2D" uid="uid://clju5lded3qvs" path="res://assets/NPCs/Steward.png" id="7_sptji"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hwkja")
+}],
+"loop": 1,
+"name": &"Jester",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7n8xq")
+}],
+"loop": 1,
+"name": &"King",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0tygy")
+}],
+"loop": 1,
+"name": &"Queen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_sptji")
+}],
+"loop": 1,
+"name": &"Steward",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_7n8xq")
@@ -29,12 +57,12 @@ size = Vector2(498, 417)
 
 [node name="Npc" type="CharacterBody2D" unique_id=1548409686]
 script = ExtResource("1_abqhh")
-npc_data = SubResource("Resource_ioo1u")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1643659522]
 position = Vector2(-12, -290)
 scale = Vector2(0.28790322, 0.28790322)
 sprite_frames = SubResource("SpriteFrames_udjd0")
+animation = &"Jester"
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=694135213]
 
@@ -54,3 +82,6 @@ offset_right = -5.0
 offset_bottom = -138.0
 scale = Vector2(4, 4)
 text = "*!*"
+
+[connection signal="body_entered" from="InteractionZone" to="." method="_on_player_entered"]
+[connection signal="body_exited" from="InteractionZone" to="." method="_on_player_exited"]

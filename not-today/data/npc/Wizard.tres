@@ -2,7 +2,35 @@
 
 [ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="1_agqn6"]
 [ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="2_esdxm"]
+[ext_resource type="Texture2D" uid="uid://63v0wrc1k7qh" path="res://assets/NPCs/Wizard.png" id="3_esdxm"]
+[ext_resource type="Resource" uid="uid://usca8dy5n3p7" path="res://data/task_sweep.tres" id="4_gtknw"]
+
+[sub_resource type="Resource" id="Resource_ef88l"]
+script = ExtResource("1_agqn6")
+text = "For some reason I'm the one telling you to sweep the floors."
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="Resource" id="Resource_861bp"]
+script = ExtResource("1_agqn6")
+text = "Go on!"
+choices = Array[String](["Yes", "No"])
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjx6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_esdxm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("2_esdxm")
+display_name = "Wizard"
+sprite_frames = SubResource("SpriteFrames_cjx6t")
+dialogue = Array[ExtResource("1_agqn6")]([SubResource("Resource_ef88l"), SubResource("Resource_861bp")])
+task = ExtResource("4_gtknw")
 metadata/_custom_type_script = "uid://c0meiq6b4xavc"

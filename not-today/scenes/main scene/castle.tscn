@@ -3,25 +3,19 @@
 [ext_resource type="Script" uid="uid://st5bvixnhx2f" path="res://scenes/main scene/camera_2d.gd" id="1_7r2yl"]
 [ext_resource type="Script" uid="uid://ddwf1cxldawii" path="res://scripts/game_manager.gd" id="1_ohiwn"]
 [ext_resource type="Script" uid="uid://buekkab7cq6dd" path="res://scenes/main scene/player.gd" id="2_pi1jp"]
-[ext_resource type="Resource" uid="uid://so1j5nlhx12i" path="res://data/task_brush_teeth.tres" id="3_cq7t8"]
 [ext_resource type="Texture2D" uid="uid://i8ojs5t3c053" path="res://scenes/main scene/SpriteTemp.png" id="3_u6f05"]
-[ext_resource type="Resource" uid="uid://cxkgyid66x4ok" path="res://data/task_change_bedsheets.tres" id="4_cq7t8"]
-[ext_resource type="Resource" uid="uid://evna4chduf8e" path="res://data/task_chop_wood.tres" id="5_ioo1u"]
+[ext_resource type="Resource" uid="uid://qex3wo85cv1b" path="res://data/npc/Queen.tres" id="5_0x2q2"]
+[ext_resource type="Resource" uid="uid://dimgfm2lsndny" path="res://data/npc/King.tres" id="6_2me3b"]
 [ext_resource type="Texture2D" uid="uid://c0eegla4p0e7x" path="res://assets/Background/Background.png" id="6_cq7t8"]
 [ext_resource type="Texture2D" uid="uid://dt2gmywqqt0q7" path="res://scenes/main scene/SpriteTemp02.png" id="6_ohiwn"]
 [ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
-[ext_resource type="Texture2D" uid="uid://cmubdqxa5tk6q" path="res://assets/NPCs/Queen.png" id="7_7fhns"]
+[ext_resource type="Resource" uid="uid://o75ybxwxl07" path="res://data/npc/Steward.tres" id="7_h4ot1"]
+[ext_resource type="Resource" uid="uid://5n4rf8c81g58" path="res://data/npc/Wizard.tres" id="8_7fhns"]
 [ext_resource type="PackedScene" uid="uid://bg7wn8rka1eih" path="res://scenes/npc.tscn" id="8_h4ot1"]
-[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="9_7fhns"]
 [ext_resource type="Texture2D" uid="uid://baohc2252qpn6" path="res://assets/PlayerSprite/Player0.png" id="10_4aumm"]
-[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="10_ofwm0"]
-[ext_resource type="Texture2D" uid="uid://brd7u8s57dmcf" path="res://assets/NPCs/KingSprite.png" id="11_80j61"]
 [ext_resource type="Texture2D" uid="uid://b2cg1hmxqffo8" path="res://assets/PlayerSprite/Player1.png" id="11_c4ji0"]
-[ext_resource type="Texture2D" uid="uid://clju5lded3qvs" path="res://assets/NPCs/Steward.png" id="11_hlruf"]
 [ext_resource type="Texture2D" uid="uid://h5wa4igg0gs2" path="res://assets/PlayerSprite/Player2.png" id="12_4yhv7"]
 [ext_resource type="Texture2D" uid="uid://gt6vw3ejfo8j" path="res://assets/PlayerSprite/Player3.png" id="13_7788p"]
-[ext_resource type="Texture2D" uid="uid://63v0wrc1k7qh" path="res://assets/NPCs/Wizard.png" id="13_ps1ki"]
-[ext_resource type="Resource" uid="uid://usca8dy5n3p7" path="res://data/task_sweep.tres" id="14_ps1ki"]
 [ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
 [ext_resource type="Texture2D" uid="uid://c0q88mxegn6tc" path="res://assets/UI/task bg.png" id="16_w06k0"]
 [ext_resource type="Texture2D" uid="uid://cevha1k62pp4s" path="res://assets/UI/fire.png" id="17_7788p"]
@@ -48,110 +42,6 @@ size = Vector2(764, 579.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rtmf8"]
 radius = 199.16074
-
-[sub_resource type="Resource" id="Resource_hlruf"]
-script = ExtResource("9_7fhns")
-speaker_name = "Queen"
-text = "Bed Sheets"
-choices = Array[String](["Yes", "No"])
-metadata/_custom_type_script = "uid://d1hm1m6khsty2"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ofwm0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_7fhns")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_80j61"]
-script = ExtResource("10_ofwm0")
-display_name = "Queen"
-sprite_frames = SubResource("SpriteFrames_ofwm0")
-dialogue = Array[ExtResource("9_7fhns")]([SubResource("Resource_hlruf")])
-task = ExtResource("4_cq7t8")
-metadata/_custom_type_script = "uid://c0meiq6b4xavc"
-
-[sub_resource type="Resource" id="Resource_7fhns"]
-script = ExtResource("9_7fhns")
-speaker_name = "King"
-text = "Brush My Teeth"
-choices = Array[String](["Yes", "No"])
-metadata/_custom_type_script = "uid://d1hm1m6khsty2"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_37oc8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_80j61")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_ps1ki"]
-script = ExtResource("10_ofwm0")
-display_name = "The King"
-sprite_frames = SubResource("SpriteFrames_37oc8")
-dialogue = Array[ExtResource("9_7fhns")]([SubResource("Resource_7fhns")])
-task = ExtResource("3_cq7t8")
-metadata/_custom_type_script = "uid://c0meiq6b4xavc"
-
-[sub_resource type="Resource" id="Resource_7q32w"]
-script = ExtResource("9_7fhns")
-speaker_name = "Steward"
-text = "Go chop wood for me!"
-choices = Array[String](["Yes", "No"])
-metadata/_custom_type_script = "uid://d1hm1m6khsty2"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7v32l"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_hlruf")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_vjjaw"]
-script = ExtResource("10_ofwm0")
-display_name = "The Steward"
-sprite_frames = SubResource("SpriteFrames_7v32l")
-dialogue = Array[ExtResource("9_7fhns")]([SubResource("Resource_7q32w")])
-task = ExtResource("5_ioo1u")
-metadata/_custom_type_script = "uid://c0meiq6b4xavc"
-
-[sub_resource type="Resource" id="Resource_kpn0u"]
-script = ExtResource("9_7fhns")
-speaker_name = "Wizard"
-text = "Sweep the floors"
-choices = Array[String](["Yes", "No"])
-metadata/_custom_type_script = "uid://d1hm1m6khsty2"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jl785"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_ps1ki")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_vdg7p"]
-script = ExtResource("10_ofwm0")
-display_name = "The Wizard"
-sprite_frames = SubResource("SpriteFrames_jl785")
-dialogue = Array[ExtResource("9_7fhns")]([SubResource("Resource_kpn0u")])
-task = ExtResource("14_ps1ki")
-metadata/_custom_type_script = "uid://c0meiq6b4xavc"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
 animations = [{
@@ -316,19 +206,19 @@ position = Vector2(-522, -3866)
 
 [node name="Queen" parent="npc_group" unique_id=1548409686 instance=ExtResource("8_h4ot1")]
 position = Vector2(-3090, -1405)
-npc_data = SubResource("Resource_80j61")
+npc_data = ExtResource("5_0x2q2")
 
 [node name="King" parent="npc_group" unique_id=1175160401 instance=ExtResource("8_h4ot1")]
 position = Vector2(939, -121)
-npc_data = SubResource("Resource_ps1ki")
+npc_data = ExtResource("6_2me3b")
 
 [node name="Steward" parent="npc_group" unique_id=1802299758 instance=ExtResource("8_h4ot1")]
 position = Vector2(-5777, 2802)
-npc_data = SubResource("Resource_vjjaw")
+npc_data = ExtResource("7_h4ot1")
 
 [node name="Wizard" parent="npc_group" unique_id=330790595 instance=ExtResource("8_h4ot1")]
 position = Vector2(3019, 2735)
-npc_data = SubResource("Resource_vdg7p")
+npc_data = ExtResource("8_7fhns")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=690931745]
 position = Vector2(0, -127)
