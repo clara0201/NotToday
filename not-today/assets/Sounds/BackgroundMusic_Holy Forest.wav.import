@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjyst100cp018"
+path="res://.godot/imported/BackgroundMusic_Holy Forest.wav-a4c01ec3da96e4f00e5f5321fa6b6006.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/BackgroundMusic_Holy Forest.wav"
+dest_files=["res://.godot/imported/BackgroundMusic_Holy Forest.wav-a4c01ec3da96e4f00e5f5321fa6b6006.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
