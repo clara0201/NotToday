@@ -56,9 +56,10 @@ func start_dialogue(lines: Array[DialogueLine], npc_ref : NPCController) -> void
 
 func _show_current_line() -> void:
 	var line: DialogueLine = _lines[_current_line_index]
-
-	_speaker_label.text = line.speaker_name
-	_speaker_label.visible = line.speaker_name != ""
+	
+	print("show line: " + npc.display_name)
+	_speaker_label.text = npc.display_name
+	#_speaker_label.visible = line.speaker_name != ""
 	_text_label.text = line.text
 	_text_label.visible_ratio = 0.0
 

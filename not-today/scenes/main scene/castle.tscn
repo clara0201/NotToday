@@ -216,7 +216,7 @@ npc_data = ExtResource("6_2me3b")
 position = Vector2(-5777, 2802)
 npc_data = ExtResource("7_h4ot1")
 
-[node name="Wizard" parent="npc_group" unique_id=330790595 instance=ExtResource("8_h4ot1")]
+[node name="Jester" parent="npc_group" unique_id=330790595 instance=ExtResource("8_h4ot1")]
 position = Vector2(3019, 2735)
 npc_data = ExtResource("8_7fhns")
 
