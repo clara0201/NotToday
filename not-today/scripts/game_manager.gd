@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	if(in_minigame_phase):
 		timer_label.text = "%02d:%02d" % time_left()
 
-	if Input.is_action_pressed("MinigamePhase"):
+	if Input.is_action_just_released("MinigamePhase"):
 		start_minigame_phase()
 
 func time_left():

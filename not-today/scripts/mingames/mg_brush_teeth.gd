@@ -1,11 +1,23 @@
 extends Minigame
+class_name BrushTeethMG
+
+@onready var dirts = $Dirts
 
 var game_manager 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+# Load the custom images for the mouse cursor.
+var arrow = load("res://assets/BrushTeethMG/toothbrush_crop.png")
+var cleaned_list : Array[Dirt]
+var dirt_counter : int
 
+var annoying_flag = false
+
+func _ready():	
+	# Changes only the arrow shape of the cursor.
+	# This is similar to changing it in the project settings.
+	Input.set_custom_mouse_cursor(arrow)
+	
+	dirt_counter = dirts.get_children().size()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -15,6 +27,14 @@ func start_minigame() -> void:
 	#TODO
 	pass
 
-func _on_button_pressed() -> void:
-	#PLACEHOLDER
-	finish_minigame()
+var m: Mutex = Mutex.new()
+
+func clean_dirt(dirt: Dirt):
+	if(cleaned_list.find(dirt) == -1):
+		cleaned_list.append(dirt)
+		dirt.queue_free()
+		
+		if(cleaned_list.size() == dirt_counter && m.try_lock()):
+			Input.set_custom_mouse_cursor(null)
+			finish_minigame()
+			annoying_flag = true
