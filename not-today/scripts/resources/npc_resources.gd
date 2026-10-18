@@ -8,3 +8,4 @@ class_name NPCData
 
 @export_group("Dialogue")
 @export var dialogue: Array[DialogueLine] = []
+@export var task: TaskResource
