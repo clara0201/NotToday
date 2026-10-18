@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://5fif3d2gqhwb"]
+
+[ext_resource type="Script" uid="uid://ditr7jo0ht0dl" path="res://scenes/main scene/ending_layer.gd" id="1_eu7ak"]
+[ext_resource type="Texture2D" uid="uid://coflomkn73hh5" path="res://assets/UI/blank card.png" id="1_pjh7x"]
+[ext_resource type="Texture2D" uid="uid://btwulfbf7xxmo" path="res://assets/UI/steward final.png" id="2_eu7ak"]
+[ext_resource type="Texture2D" uid="uid://bxdr15gslegg7" path="res://assets/UI/queen final.png" id="3_nsvfl"]
+[ext_resource type="Texture2D" uid="uid://cjgaaksvlpqsp" path="res://assets/UI/king final.png" id="4_ivf5b"]
+[ext_resource type="Texture2D" uid="uid://cmt0crkdchepo" path="res://assets/UI/final.png" id="6_nsvfl"]
+
+[node name="EndingLayer" type="CanvasLayer" unique_id=1683281122]
+script = ExtResource("1_eu7ak")
+
+[node name="EndTitle" type="TextureRect" parent="." unique_id=1957628861]
+offset_left = 512.0
+offset_top = 240.00002
+offset_right = 3572.0
+offset_bottom = 2240.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_pjh7x")
+
+[node name="Label" type="Label" parent="EndTitle" unique_id=1955215723]
+layout_mode = 0
+offset_left = 986.6666
+offset_top = 456.66663
+offset_right = 2083.6665
+offset_bottom = 729.6666
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "THE END...?"
+
+[node name="KingScreen" type="TextureRect" parent="." unique_id=467421139]
+visible = false
+offset_top = -1.5258789e-05
+offset_right = 2560.0
+offset_bottom = 1440.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_ivf5b")
+
+[node name="Label" type="Label" parent="KingScreen" unique_id=1730356167]
+layout_mode = 0
+offset_left = 1150.6667
+offset_top = 362.6667
+offset_right = 2060.0
+offset_bottom = 1059.6667
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "It’s all right, little one.
+"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="KingScreen" unique_id=594341557]
+layout_mode = 0
+offset_left = 1374.6667
+offset_top = 917.3333
+offset_right = 1932.0001
+offset_bottom = 1055.3333
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+text = "The King respects your spirit"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="QueenScreen" type="TextureRect" parent="." unique_id=1650323313]
+visible = false
+offset_right = 2560.0
+offset_bottom = 1440.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_nsvfl")
+
+[node name="Label" type="Label" parent="QueenScreen" unique_id=2036153622]
+layout_mode = 0
+offset_left = 1150.6667
+offset_top = 362.6667
+offset_right = 2060.0
+offset_bottom = 1059.6667
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "You can say no, dear. "
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="QueenScreen" unique_id=1555858627]
+layout_mode = 0
+offset_left = 1374.6667
+offset_top = 917.3333
+offset_right = 1932.0001
+offset_bottom = 1055.3333
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+text = "The Queen thinks you're cute"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="StewardScreen" type="TextureRect" parent="." unique_id=1885285174]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_eu7ak")
+
+[node name="Label" type="Label" parent="StewardScreen" unique_id=1962241831]
+layout_mode = 0
+offset_left = 1150.6667
+offset_top = 362.6667
+offset_right = 2060.0
+offset_bottom = 1059.6667
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Oh, I’ve got so many tentacles, I’d completely forgotten just how tiny you are..."
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StewardScreen" unique_id=132383999]
+layout_mode = 0
+offset_left = 1374.6667
+offset_top = 917.3333
+offset_right = 1932.0001
+offset_bottom = 1055.3333
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+text = "The Steward knows you're a hardworker."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Final screen" type="TextureRect" parent="." unique_id=194930518]
+visible = false
+offset_right = 2560.0
+offset_bottom = 1453.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_nsvfl")
+
+[node name="Label" type="Label" parent="Final screen" unique_id=704282949]
+layout_mode = 0
+offset_left = 566.6666
+offset_top = 320.0
+offset_right = 1463.6666
+offset_bottom = 1145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "THE END!
+
+:)"
+horizontal_alignment = 1
