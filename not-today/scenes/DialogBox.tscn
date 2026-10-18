@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d08rguc2oh7ne"]
+
+[ext_resource type="Script" uid="uid://cghfbboa6hjcd" path="res://scenes/dialog_box.gd" id="1_bqexh"]
+
+[node name="DialogBox" type="CanvasLayer" unique_id=1045192609]
+layer = 10
+script = ExtResource("1_bqexh")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1810292476]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -345.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=623793863]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=698695007]
+layout_mode = 2
+
+[node name="SpeakerLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2135455317]
+layout_mode = 2
+text = "\"\""
+
+[node name="TextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1105361391]
+layout_mode = 2
+bbcode_enabled = true
+text = "\"\""
+fit_content = true
+scroll_active = false
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=262569282]
+layout_mode = 2

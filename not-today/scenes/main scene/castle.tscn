@@ -11,8 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://c0eegla4p0e7x" path="res://assets/Background/Background.png" id="6_cq7t8"]
 [ext_resource type="Texture2D" uid="uid://dt2gmywqqt0q7" path="res://scenes/main scene/SpriteTemp02.png" id="6_ohiwn"]
 [ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
+[ext_resource type="PackedScene" uid="uid://bg7wn8rka1eih" path="res://scenes/npc.tscn" id="8_h4ot1"]
+[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="9_7fhns"]
 [ext_resource type="Texture2D" uid="uid://baohc2252qpn6" path="res://assets/PlayerSprite/Player0.png" id="10_4aumm"]
+[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="10_ofwm0"]
 [ext_resource type="PackedScene" uid="uid://b075itcslrm22" path="res://scenes/task_ticket.tscn" id="10_s1hkd"]
+[ext_resource type="Texture2D" uid="uid://brd7u8s57dmcf" path="res://assets/NPCs/KingSprite.png" id="11_80j61"]
 [ext_resource type="Texture2D" uid="uid://b2cg1hmxqffo8" path="res://assets/PlayerSprite/Player1.png" id="11_c4ji0"]
 [ext_resource type="Texture2D" uid="uid://h5wa4igg0gs2" path="res://assets/PlayerSprite/Player2.png" id="12_4yhv7"]
 [ext_resource type="Texture2D" uid="uid://gt6vw3ejfo8j" path="res://assets/PlayerSprite/Player3.png" id="13_7788p"]
@@ -22,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dmt8ik45lvum7" path="res://assets/UI/!heart.png" id="18_fm11v"]
 [ext_resource type="Texture2D" uid="uid://b1npg5vy374ar" path="res://assets/UI/thought bubble.png" id="19_4yhv7"]
 [ext_resource type="PackedScene" uid="uid://5fif3d2gqhwb" path="res://scenes/main scene/ending_layer.tscn" id="22_fm11v"]
+[ext_resource type="PackedScene" uid="uid://d08rguc2oh7ne" path="res://scenes/DialogBox.tscn" id="25_7fhns"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_udjd0"]
 radius = 188.09572
@@ -40,6 +45,36 @@ size = Vector2(764, 579.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rtmf8"]
 radius = 199.16074
+
+[sub_resource type="Resource" id="Resource_7fhns"]
+script = ExtResource("9_7fhns")
+speaker_name = "k"
+text = "aaa"
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="Resource" id="Resource_ofwm0"]
+script = ExtResource("9_7fhns")
+speaker_name = "k"
+text = "	da"
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37oc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_80j61")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_hlruf"]
+script = ExtResource("10_ofwm0")
+display_name = "The King"
+sprite_frames = SubResource("SpriteFrames_37oc8")
+dialogue = Array[ExtResource("9_7fhns")]([SubResource("Resource_7fhns"), SubResource("Resource_ofwm0")])
+metadata/_custom_type_script = "uid://c0meiq6b4xavc"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
 animations = [{
@@ -187,6 +222,12 @@ zoom = Vector2(0.6, 0.6)
 process_callback = 0
 script = ExtResource("1_7r2yl")
 SPEED = 5
+
+[node name="npc_group" type="Node2D" parent="." unique_id=547748131]
+position = Vector2(-522, -3866)
+
+[node name="King" parent="npc_group" unique_id=1548409686 instance=ExtResource("8_h4ot1")]
+npc_data = SubResource("Resource_hlruf")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=690931745]
 position = Vector2(0, -127)
@@ -390,6 +431,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Next day!"
+
+[node name="DialogueBox" parent="." unique_id=1045192609 instance=ExtResource("25_7fhns")]
 
 [node name="MinigamesWindow" type="Window" parent="." unique_id=1906644560]
 physics_object_picking = true
