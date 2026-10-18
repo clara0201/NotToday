@@ -34,4 +34,5 @@ func _on_sweep_area_2d_area_entered(area: Area2D) -> void:
 			$AudioStreamPlayer.play()
 			
 			if(dirt_list.size() == 0):
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				finish_minigame()

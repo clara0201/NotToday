@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var playerSprite = $"../Player/Player Sprite"
 @onready var animatedsprite = $"AnimatedSprite2D"
 
-const SPEED = 500.0
+const SPEED = 1000.0
 
 var facing = "right"
 

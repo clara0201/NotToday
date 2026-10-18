@@ -8,6 +8,7 @@ class_name GameManager
 @onready var no_label = $UILayer/CountersMC/HBoxContainer/NosLabel
 @onready var no_icon = $UILayer/CountersMC/HBoxContainer/NosIcon
 @onready var timer_label = $UILayer/TimerMC/TimerLabel
+@onready var timer_container = $UILayer/TimerMC
 @onready var fadeout_color_rect = $FadeoutLayer/ColorRect
 @onready var animation_player = $FadeoutLayer/AnimationPlayer
 @onready var day_over_layer = $DayOverLayer
@@ -32,7 +33,7 @@ class_name GameManager
 @export var current_task_index = 0
 @export var current_minigame : Minigame
 
-@export var total_days = 3
+@export var total_days = 2
 
 var ticket_scene = preload("res://scenes/task_ticket.tscn")
 
@@ -112,9 +113,16 @@ func start_minigame_phase():
 	minigames_window.show()
 	
 	in_minigame_phase = true
-	timer_label.show()
+	#timer_label.show()
+	timer_container.show()
 	
 	timer.start(minigames_timer)
+	
+	for n in task_container.get_children():
+		if(n.name != "MarginContainer"):
+			var task = n.task_data
+			print(task)
+			tasks_list.append(task)
 	
 	next_minigame()
 
@@ -193,6 +201,7 @@ func create_task(task_data : TaskResource):
 	
 	task_container.add_child(task)
 	task.init_data(task_data)
+	
 
 
 ### SIGNALS ###

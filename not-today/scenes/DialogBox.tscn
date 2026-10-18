@@ -27,14 +27,17 @@ layout_mode = 2
 
 [node name="SpeakerLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2135455317]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "\"\""
 
 [node name="TextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1105361391]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "\"\""
 fit_content = true
 scroll_active = false
+tab_size = 5
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=262569282]
 layout_mode = 2
