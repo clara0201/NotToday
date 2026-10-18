@@ -19,8 +19,6 @@ func _ready():
 	Input.set_custom_mouse_cursor(arrow)
 	
 	dirt_counter = dirts.get_children().size()
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,3 +40,6 @@ func clean_dirt(dirt: Dirt):
 			Input.set_custom_mouse_cursor(null)
 			finish_minigame()
 			annoying_flag = true
+
+func incomplete_minigame():
+	Input.set_custom_mouse_cursor(null)

@@ -25,7 +25,6 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_sweep_area_2d_area_entered(area: Area2D) -> void:
 	for d in dirt_list:
 		if(d.get_node("Area2D") == area):
@@ -36,3 +35,6 @@ func _on_sweep_area_2d_area_entered(area: Area2D) -> void:
 			if(dirt_list.size() == 0):
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				finish_minigame()
+
+func incomplete_minigame():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

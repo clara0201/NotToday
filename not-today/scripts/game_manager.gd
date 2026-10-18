@@ -129,6 +129,8 @@ func start_minigame_phase():
 func finish_minigame_phase():	
 	timer.stop()
 	
+	current_minigame.incomplete_minigame()
+	
 	for task in tasks_list:
 		if not task.completed:
 			on_minigame_not_completed(task)

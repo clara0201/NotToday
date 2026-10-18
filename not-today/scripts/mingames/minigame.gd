@@ -11,3 +11,7 @@ func start_minigame() -> void:
 func finish_minigame():
 	print("finished!")
 	minigame_completed.emit()
+
+func incomplete_minigame():
+	# Override this in subclasses
+	push_error("incomplete_minigame() not implemented!")
