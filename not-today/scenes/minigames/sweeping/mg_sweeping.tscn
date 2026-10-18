@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://t5trwv11qbld"]
+
+[ext_resource type="Script" uid="uid://dlm3xfw06acu2" path="res://scenes/minigames/sweeping/mg_sweeping.gd" id="1_rrpqk"]
+[ext_resource type="Texture2D" uid="uid://c0tib70r3sktn" path="res://assets/MGsweeping/backgroudn.png" id="1_tnphl"]
+[ext_resource type="Texture2D" uid="uid://c0ybv246mheko" path="res://assets/MGsweeping/dirt1.png" id="2_ypkxm"]
+[ext_resource type="Texture2D" uid="uid://b3qjxf3ki8er4" path="res://assets/MGsweeping/dirt2.png" id="3_rrpqk"]
+[ext_resource type="Texture2D" uid="uid://2ikmjx2aokkk" path="res://assets/MGsweeping/dirt3.png" id="4_6rctq"]
+[ext_resource type="Texture2D" uid="uid://bq44qmumi41xg" path="res://assets/MGsweeping/sweep.png" id="5_ypkxm"]
+
+[sub_resource type="Animation" id="Animation_rrpqk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sweep:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6rctq"]
+resource_name = "sweeping"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sweep:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.3490658503988659, -0.3490658503988659, 0.3490658503988659]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mx7xi"]
+_data = {
+&"RESET": SubResource("Animation_rrpqk"),
+&"sweeping": SubResource("Animation_6rctq")
+}
+
+[node name="MgSweeping" type="Node2D" unique_id=1458625046]
+script = ExtResource("1_rrpqk")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1765538560]
+position = Vector2(768, 432)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_tnphl")
+
+[node name="Dirts" type="Node2D" parent="." unique_id=1286489196]
+
+[node name="Dirt1" type="Sprite2D" parent="Dirts" unique_id=2081166016]
+position = Vector2(897, 697)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_ypkxm")
+
+[node name="Area2D" type="Area2D" parent="Dirts/Dirt1" unique_id=1174472150]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dirts/Dirt1/Area2D" unique_id=1354629528]
+polygon = PackedVector2Array(132.50024, -272.49994, 250.00024, -39.99997, 140.00024, 227.5, -129.99976, 165, -179.99976, -77.49997, 0.00024414063, -269.99994)
+
+[node name="Dirt5" type="Sprite2D" parent="Dirts" unique_id=139873781]
+position = Vector2(432.00003, 127)
+rotation = -1.1903409
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ypkxm")
+
+[node name="Area2D" type="Area2D" parent="Dirts/Dirt5" unique_id=861936703]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dirts/Dirt5/Area2D" unique_id=813053133]
+polygon = PackedVector2Array(132.50024, -272.49994, 250.00024, -39.99997, 140.00024, 227.5, -129.99976, 165, -179.99976, -77.49997, 0.00024414063, -269.99994)
+
+[node name="Dirt2" type="Sprite2D" parent="Dirts" unique_id=1617498644]
+position = Vector2(213.99998, 496.99997)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_rrpqk")
+
+[node name="Area2D" type="Area2D" parent="Dirts/Dirt2" unique_id=1539051271]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dirts/Dirt2/Area2D" unique_id=1485677233]
+polygon = PackedVector2Array(-189.99997, -14.999878, -17.5, -157.49988, 120, -132.49988, 170, 37.500122, 330, 150.00012, 265, 310.00012, -424.99994, 255.00012)
+
+[node name="Dirt3" type="Sprite2D" parent="Dirts" unique_id=2129592991]
+position = Vector2(1319, 797)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_6rctq")
+
+[node name="Area2D" type="Area2D" parent="Dirts/Dirt3" unique_id=1085123360]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dirts/Dirt3/Area2D" unique_id=2049540090]
+polygon = PackedVector2Array(-90, -100, -406.6665, -26.666504, -403.33325, 46.666748, -253.3335, 126.66675, 360, 116.66675, 400, -10)
+
+[node name="Dirt6" type="Sprite2D" parent="Dirts" unique_id=1563755584]
+position = Vector2(186.00002, 261.00003)
+rotation = -0.15029903
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_6rctq")
+
+[node name="Area2D" type="Area2D" parent="Dirts/Dirt6" unique_id=2003588011]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dirts/Dirt6/Area2D" unique_id=1469048860]
+polygon = PackedVector2Array(-90, -100, -406.6665, -26.666504, -403.33325, 46.666748, -253.3335, 126.66675, 360, 116.66675, 400, -10)
+
+[node name="Dirt4" type="Sprite2D" parent="Dirts" unique_id=363166144]
+position = Vector2(1331.9999, 332)
+rotation = -0.19168833
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_rrpqk")
+
+[node name="Area2D" type="Area2D" parent="Dirts/Dirt4" unique_id=852978475]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dirts/Dirt4/Area2D" unique_id=1417581102]
+rotation = -0.24382481
+polygon = PackedVector2Array(200.31592, 43.576416, 214.00732, 132.66919, 339.86523, 312.55737, 185.91846, 406.36792, -393.9331, 230.30786, -481.72998, 51.58545, -315.97803, -20.187744, -33.174805, -224.99805, 246.09277, -78.507324)
+
+[node name="Sweep" type="Sprite2D" parent="." unique_id=573500908]
+position = Vector2(603, 360)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_ypkxm")
+
+[node name="Area2D" type="Area2D" parent="Sweep" unique_id=272550777]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sweep/Area2D" unique_id=790361298]
+polygon = PackedVector2Array(-90, 188, -120, 326, -36, 372, 116, 408, 242, 362, 182, 186)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1076742223]
+libraries/ = SubResource("AnimationLibrary_mx7xi")
+
+[connection signal="area_entered" from="Sweep/Area2D" to="." method="_on_sweep_area_2d_area_entered"]
