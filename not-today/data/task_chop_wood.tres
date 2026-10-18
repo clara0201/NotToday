@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("1_kkyms")
 title = "Chop wood!"
+giver = "Steward"
+multiplier = 3
 minigame_scene = ExtResource("1_c5xb0")
 metadata/_custom_type_script = "uid://e2byqvdy5qq2"

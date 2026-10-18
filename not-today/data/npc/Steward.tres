@@ -2,7 +2,40 @@
 
 [ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="1_50pgq"]
 [ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="2_q745f"]
+[ext_resource type="Texture2D" uid="uid://clju5lded3qvs" path="res://assets/NPCs/Steward.png" id="3_q745f"]
+[ext_resource type="Resource" uid="uid://evna4chduf8e" path="res://data/task_chop_wood.tres" id="4_7f44r"]
+
+[sub_resource type="Resource" id="Resource_0x2q2"]
+script = ExtResource("1_50pgq")
+text = "There you are!"
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="Resource" id="Resource_2me3b"]
+script = ExtResource("1_50pgq")
+text = "There's wood to be cut for the fireplace."
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="Resource" id="Resource_h4ot1"]
+script = ExtResource("1_50pgq")
+text = "Chop chop!"
+choices = Array[String](["Yes", "No"])
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kpn0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q745f")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("2_q745f")
+display_name = "Steward"
+sprite_frames = SubResource("SpriteFrames_kpn0u")
+dialogue = Array[ExtResource("1_50pgq")]([SubResource("Resource_0x2q2"), SubResource("Resource_2me3b"), SubResource("Resource_h4ot1")])
+task = ExtResource("4_7f44r")
 metadata/_custom_type_script = "uid://c0meiq6b4xavc"

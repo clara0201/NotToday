@@ -7,6 +7,6 @@
 script = ExtResource("1_by02a")
 title = "Sweep the Hall"
 description = "Sweep away the dirt in the hell"
-giver = "Wizard"
+giver = "Jester"
 minigame_scene = ExtResource("1_4ptru")
 metadata/_custom_type_script = "uid://e2byqvdy5qq2"

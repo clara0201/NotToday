@@ -1,4 +1,6 @@
 extends CanvasLayer
+class_name DialogBox
+
 ## Displays dialogue with a typewriter effect and optional choices.
 
 signal dialogue_started
@@ -19,7 +21,7 @@ var _current_tween: Tween = null
 @onready var _choice_container: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/ChoiceContainer
 @onready var _main: = $".."
 
-var npc : NPC
+var npc : NPCData
 
 func _ready() -> void:
 	_panel.visible = false
@@ -42,11 +44,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			_advance()
 
 
-func start_dialogue(lines: Array[DialogueLine], npc_ref : NPC) -> void:
+func start_dialogue(lines: Array[DialogueLine], npc_ref : NPCController) -> void:
 	if lines.is_empty():
 		return
 
-	npc = npc_ref
+	npc = npc_ref.npc_data
 	_lines = lines
 	_current_line_index = 0
 	_panel.visible = true
@@ -56,9 +58,10 @@ func start_dialogue(lines: Array[DialogueLine], npc_ref : NPC) -> void:
 
 func _show_current_line() -> void:
 	var line: DialogueLine = _lines[_current_line_index]
-
-	_speaker_label.text = line.speaker_name
-	_speaker_label.visible = line.speaker_name != ""
+	
+	print("show line: " + npc.display_name)
+	_speaker_label.text = npc.display_name
+	#_speaker_label.visible = line.speaker_name != ""
 	_text_label.text = line.text
 	_text_label.visible_ratio = 0.0
 
@@ -139,12 +142,12 @@ func _on_choice_pressed(index: int) -> void:
 		_close()
 	else:
 		_show_current_line()
-
-	choice_made.emit(npc.npc_data.task)
+	
+	if(index == 0):
+		choice_made.emit(npc.task)
 
 
 func _close() -> void:
 	_panel.visible = false
-	_lines.clear()
 	_current_line_index = 0
 	dialogue_finished.emit()

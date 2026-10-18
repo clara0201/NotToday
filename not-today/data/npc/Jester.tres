@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://raw2g7f0bm43"]
+
+[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="1_n6d0w"]
+[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="2_ef88l"]
+[ext_resource type="Texture2D" uid="uid://bohh3jk5tbqy" path="res://assets/NPCs/Jester.png" id="3_ef88l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_861bp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ef88l")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_ef88l")
+display_name = "Jester"
+sprite_frames = SubResource("SpriteFrames_861bp")
+metadata/_custom_type_script = "uid://c0meiq6b4xavc"
