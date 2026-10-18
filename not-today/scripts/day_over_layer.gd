@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-@onready var DO_completed_tasks = $PanelContainer/VBoxContainer/CompletedTasksLabel
-@onready var DO_likeability = $PanelContainer/VBoxContainer/LikeabilityLabel
-@onready var DO_incompleted_tasks = $PanelContainer/VBoxContainer/IncompletedTasksLabel
-@onready var DO_no = $PanelContainer/VBoxContainer/NoLabel
+@onready var DO_completed_tasks = $VBoxContainer/CompletedTasksLabel
+@onready var DO_likeability = $VBoxContainer/LikeabilityLabel
+@onready var DO_incompleted_tasks = $VBoxContainer/IncompletedTasksLabel
+@onready var DO_no = $VBoxContainer/NoLabel
 
 var DO_completed_tasks_template = "You've completed: %s tasks"
 var DO_incompleted_tasks_template = "You've let people down: %s times"
