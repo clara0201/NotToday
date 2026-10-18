@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var playerSprite = $"../Player/Player Sprite"
 @onready var animatedsprite = $"AnimatedSprite2D"
 
-const SPEED = 300.0
+const SPEED = 500.0
 
 var facing = "right"
 
@@ -25,13 +25,19 @@ func _physics_process(delta: float) -> void:
 		animatedsprite.play("runL")
 		facing = "right"
 		animatedsprite.flip_h = true
+
+	if Input.is_action_pressed("up"):
+		animatedsprite.play("runL")
+		
+	if Input.is_action_pressed("down"):
+		animatedsprite.play("runL")
 	
 	if Input.is_action_pressed("left"):
 		animatedsprite.play("runL")
 		facing = "left"
 		animatedsprite.flip_h = false
 		
-	if !Input.is_action_pressed("left") && !Input.is_action_pressed("right"):
+	if !Input.is_action_pressed("left") && !Input.is_action_pressed("right") && !Input.is_action_pressed("down") && !Input.is_action_pressed("up"):
 		animatedsprite.play("default")
 	
 	move_and_slide()
