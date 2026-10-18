@@ -13,6 +13,9 @@ class_name GameManager
 @onready var day_over_layer = $DayOverLayer
 @onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/DayLabel
 
+@onready var npc_group = $npc_group
+@onready var _dialogue_box: CanvasLayer = $DialogueBox
+
 @export var likeability_percentage = 30
 @export var likeability_loss = 10
 @export var likeability_gain = 5
@@ -41,7 +44,7 @@ var day_names = ["Mondagt", "Tuesdlof", "Wednasgot"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Connect NPC interaction signals
-	for npc in get_tree().get_nodes_in_group("npcs"):
+	for npc in npc_group.get_children():
 		npc.interacted.connect(_on_npc_interacted)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -184,15 +187,15 @@ func _on_next_day_button_pressed() -> void:
 	start_day()
 
 func _on_npc_interacted(npc: NPC) -> void:
-	print("adw")
-	var player := get_tree().get_first_node_in_group("player")
-	if player and player.has_method("start_interaction"):
-		player.start_interaction()
+	print("start_interaction")
 
-	if npc.npc_data:
-		for line in npc.npc_data.dialogue_lines:
-			print(npc.npc_data.display_name + ": " + line)
+	print(npc.npc_data.to_string() + "\n")
+	if npc.npc_data and not npc.npc_data.dialogue.is_empty():
+		print(npc.npc_data.to_string() + "\n")
+		_dialogue_box.start_dialogue(npc.npc_data.dialogue)
+		npc._interaction_prompt.visible = false
+		npc._has_talked = true
 
-	await get_tree().create_timer(0.5).timeout
-	if player and player.has_method("end_interaction"):
-		player.end_interaction()
+
+func _on_dialogue_finished() -> void:
+	pass

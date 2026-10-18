@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bg7wn8rka1eih"]
+
+[ext_resource type="Script" uid="uid://cmit5y0foqoys" path="res://scenes/npc.gd" id="1_abqhh"]
+[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="2_7n8xq"]
+[ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="2_rv78h"]
+[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="3_4wlns"]
+
+[sub_resource type="Resource" id="Resource_ioo1u"]
+script = ExtResource("3_4wlns")
+display_name = "The King"
+metadata/_custom_type_script = "uid://c0meiq6b4xavc"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhvi1"]
+radius = 194.74342
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4qgy"]
+size = Vector2(113, 118)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rv78h")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Npc" type="CharacterBody2D" unique_id=1548409686]
+script = ExtResource("1_abqhh")
+npc_data = SubResource("Resource_ioo1u")
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=694135213]
+
+[node name="InteractionShape" type="CollisionShape2D" parent="InteractionZone" unique_id=1861492836]
+shape = SubResource("CircleShape2D_dhvi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=886421645]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_g4qgy")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1643659522]
+sprite_frames = SubResource("SpriteFrames_udjd0")
+
+[node name="InteractionPrompt" type="Label" parent="." unique_id=1951135575]
+modulate = Color(0.96605235, 0.9660521, 5.390644e-06, 1)
+offset_left = -45.0
+offset_top = -161.0
+offset_right = -5.0
+offset_bottom = -138.0
+scale = Vector2(4, 4)
+text = "*!*"

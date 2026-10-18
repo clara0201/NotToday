@@ -13,10 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://dft5udjgu727a" path="res://scenes/main scene/SpriteTemp02 - Copy.png" id="5_s1hkd"]
 [ext_resource type="Texture2D" uid="uid://dt2gmywqqt0q7" path="res://scenes/main scene/SpriteTemp02.png" id="6_ohiwn"]
 [ext_resource type="Texture2D" uid="uid://cm0150lw5ilec" path="res://scenes/main scene/SpriteTemp01.png" id="7_3mmif"]
+[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="8_4yhv7"]
+[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="9_7788p"]
 [ext_resource type="PackedScene" uid="uid://b075itcslrm22" path="res://scenes/task_ticket.tscn" id="10_s1hkd"]
 [ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="11_ohiwn"]
 [ext_resource type="PackedScene" uid="uid://bg7wn8rka1eih" path="res://scenes/npc.tscn" id="13_ioo1u"]
-[ext_resource type="Resource" uid="uid://bvtg367mobflc" path="res://data/npcs/king.tres" id="14_4aumm"]
+[ext_resource type="PackedScene" uid="uid://d08rguc2oh7ne" path="res://scenes/DialogBox.tscn" id="15_4aumm"]
 [ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4qgy"]
@@ -27,6 +29,40 @@ size = Vector2(133, 144)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udjd0"]
 size = Vector2(163, 129)
+
+[sub_resource type="Resource" id="Resource_w06k0"]
+script = ExtResource("8_4yhv7")
+speaker_name = "tHE kING"
+text = "hELLOW"
+portrait = ExtResource("11_ohiwn")
+choices = Array[String](["Yes", "No"])
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="Resource" id="Resource_7n8xq"]
+script = ExtResource("8_4yhv7")
+speaker_name = "lad"
+text = "Hello my toothiness"
+portrait = ExtResource("3_u6f05")
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4aumm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ohiwn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_fm11v"]
+script = ExtResource("9_7788p")
+id = "1"
+display_name = "The King"
+sprite_frames = SubResource("SpriteFrames_4aumm")
+dialogue = Array[ExtResource("8_4yhv7")]([SubResource("Resource_w06k0"), SubResource("Resource_7n8xq")])
+metadata/_custom_type_script = "uid://c0meiq6b4xavc"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_udjd0"]
 animations = [{
@@ -179,6 +215,11 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_u6f05")
 
+[node name="npc_group" type="Node2D" parent="." unique_id=1244589890]
+
+[node name="King" parent="npc_group" unique_id=1548409686 instance=ExtResource("13_ioo1u")]
+npc_data = SubResource("Resource_fm11v")
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=690931745]
 script = ExtResource("2_pi1jp")
 
@@ -196,13 +237,11 @@ sprite_frames = SubResource("SpriteFrames_udjd0")
 visible = false
 shape = SubResource("CircleShape2D_dhvi1")
 
-[node name="King" parent="." unique_id=272560002 instance=ExtResource("13_ioo1u")]
-position = Vector2(348, -452)
-npc_data = ExtResource("14_4aumm")
-
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1659786690]
 position = Vector2(672, 152)
 texture = ExtResource("3_4jbif")
+
+[node name="DialogueBox" parent="." unique_id=1045192609 instance=ExtResource("15_4aumm")]
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1085951729]
 
