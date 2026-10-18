@@ -417,6 +417,10 @@ always_on_top = true
 stream = ExtResource("18_4aumm")
 autoplay = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1489318976]
+stream = ExtResource("18_4aumm")
+autoplay = true
+
 [connection signal="timeout" from="TimerMinigames" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="DayOverLayer/PanelContainer/VBoxContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
 
