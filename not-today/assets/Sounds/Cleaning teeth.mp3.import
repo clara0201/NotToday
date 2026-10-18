@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctexnm07xfrn6"
+path="res://.godot/imported/Cleaning teeth.mp3-72fef2cfdfdf2b612df7d54392731114.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/Cleaning teeth.mp3"
+dest_files=["res://.godot/imported/Cleaning teeth.mp3-72fef2cfdfdf2b612df7d54392731114.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
