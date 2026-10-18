@@ -419,6 +419,7 @@ autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1489318976]
 stream = ExtResource("18_4aumm")
+volume_db = -6.386
 autoplay = true
 
 [connection signal="timeout" from="TimerMinigames" to="." method="_on_timer_timeout"]

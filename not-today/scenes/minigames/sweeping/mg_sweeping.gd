@@ -31,6 +31,7 @@ func _on_sweep_area_2d_area_entered(area: Area2D) -> void:
 		if(d.get_node("Area2D") == area):
 			dirt_list.erase(d)
 			d.queue_free()
+			$AudioStreamPlayer.play()
 			
 			if(dirt_list.size() == 0):
 				finish_minigame()

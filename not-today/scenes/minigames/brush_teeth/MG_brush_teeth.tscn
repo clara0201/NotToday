@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c82ejor258qks" path="res://scenes/minigames/brush_teeth/dirt.tscn" id="5_ueu5i"]
 [ext_resource type="Texture2D" uid="uid://de2nn2tmefd8o" path="res://assets/BrushTeethMG/dirt_long.png" id="6_06hed"]
 [ext_resource type="Texture2D" uid="uid://bxrdwb864w2q8" path="res://assets/BrushTeethMG/guyToothbrush.png" id="7_7bq7i"]
-[ext_resource type="AudioStream" uid="uid://du4pu537g4cqr" path="res://assets/Sounds/Brushing Teeth_1.mp3" id="8_ijedr"]
+[ext_resource type="AudioStream" uid="uid://dglack0brp3t3" path="res://assets/Sounds/Brushing Teeth.mp3" id="8_ijedr"]
 
 [node name="MgBrushTeeth" type="Node2D" unique_id=216175755]
 script = ExtResource("1_wkj1s")

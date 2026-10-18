@@ -32,6 +32,7 @@ func _on_bedsheet_area_2d_input_event(viewport: Node, event: InputEvent, shape_i
 		if event.pressed:
 			is_dragging = true
 			drag_offset.y = old_bedsheet.position.y - event.position.y
+			$AudioStreamPlayer.play()
 		else:
 			is_dragging = false
 
@@ -52,6 +53,7 @@ func _on_new_bedsheet_area_2d_input_event(viewport: Node, event: InputEvent, sha
 		if event.pressed:
 			is_dragging = true
 			drag_offset.y = new_bedsheet.position.y - event.position.y
+			$AudioStreamPlayer.play()
 		else:
 			is_dragging = false
 
