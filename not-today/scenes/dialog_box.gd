@@ -19,6 +19,7 @@ var _current_tween: Tween = null
 @onready var _choice_container: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/ChoiceContainer
 @onready var _main: = $".."
 
+var npc : NPC
 
 func _ready() -> void:
 	_panel.visible = false
@@ -41,10 +42,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			_advance()
 
 
-func start_dialogue(lines: Array[DialogueLine]) -> void:
+func start_dialogue(lines: Array[DialogueLine], npc_ref : NPC) -> void:
 	if lines.is_empty():
 		return
 
+	npc = npc_ref
 	_lines = lines
 	_current_line_index = 0
 	_panel.visible = true
@@ -138,7 +140,7 @@ func _on_choice_pressed(index: int) -> void:
 	else:
 		_show_current_line()
 
-	choice_made.emit(chosen_index)
+	choice_made.emit(npc.npc_data.task)
 
 
 func _close() -> void:

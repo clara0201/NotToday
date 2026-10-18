@@ -35,3 +35,7 @@ theme_override_font_sizes/mono_font_size = 20
 text = "BRUSH THE KING'S TEETH!
 Given by: King"
 fit_content = true
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=533201988]
+visible = false
+layout_mode = 2

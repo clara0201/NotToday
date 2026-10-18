@@ -19,6 +19,7 @@ func _ready() -> void:
 	_interaction_zone.body_entered.connect(_on_player_entered)
 	_interaction_zone.body_exited.connect(_on_player_exited)
 	_interaction_prompt.visible = false
+	_player_in_range = false
 
 	if npc_data:
 		_apply_npc_data()

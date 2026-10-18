@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="1_4hwjc"]
 [ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="1_hi77k"]
 [ext_resource type="Texture2D" uid="uid://ugkqlvikvgvn" path="res://icon.svg" id="2_axft6"]
+[ext_resource type="PackedScene" uid="uid://dogqo7r731jaw" path="res://scenes/minigames/brush_teeth/MG_brush_teeth.tscn" id="4_1fa6o"]
+[ext_resource type="Script" uid="uid://e2byqvdy5qq2" path="res://scripts/resources/task_resource.gd" id="5_n5eki"]
+
+[sub_resource type="Resource" id="Resource_7n8xq"]
+script = ExtResource("1_hi77k")
+speaker_name = "king"
+text = "fesf"
+choices = Array[String](["Yes", "No"])
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
+
+[sub_resource type="Resource" id="Resource_4wlns"]
+script = ExtResource("1_hi77k")
+speaker_name = "king "
+text = "fuck you"
+metadata/_custom_type_script = "uid://d1hm1m6khsty2"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_axft6"]
 animations = [{
@@ -15,8 +30,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_ejucw"]
+script = ExtResource("5_n5eki")
+title = "Brush Teeth"
+description = "Brush the Kings teeth"
+giver = "King"
+minigame_scene = ExtResource("4_1fa6o")
+metadata/_custom_type_script = "uid://e2byqvdy5qq2"
+
 [resource]
 script = ExtResource("1_4hwjc")
 display_name = "The King"
 sprite_frames = SubResource("SpriteFrames_axft6")
+dialogue = Array[ExtResource("1_hi77k")]([SubResource("Resource_7n8xq"), SubResource("Resource_4wlns")])
+task = SubResource("Resource_ejucw")
 metadata/_custom_type_script = "uid://c0meiq6b4xavc"

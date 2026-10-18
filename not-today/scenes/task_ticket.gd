@@ -12,5 +12,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func init_data(task_data = TaskResource):
+func init_data(task_data : TaskResource):
 	textlabel.text = task_data.title + "\n" + "Giver: " + task_data.giver

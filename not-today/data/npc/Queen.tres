@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://qex3wo85cv1b"]
+
+[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="1_7v32l"]
+[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="2_7q32w"]
+[ext_resource type="Resource" uid="uid://cxkgyid66x4ok" path="res://data/task_change_bedsheets.tres" id="3_7q32w"]
+
+[resource]
+script = ExtResource("2_7q32w")
+display_name = "Queen"
+task = ExtResource("3_7q32w")
+metadata/_custom_type_script = "uid://c0meiq6b4xavc"

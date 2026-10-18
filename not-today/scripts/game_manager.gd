@@ -50,6 +50,8 @@ func _ready() -> void:
 	# Connect NPC interaction signals
 	for npc in npc_group.get_children():
 		npc.interacted.connect(_on_npc_interacted)
+	
+	_dialogue_box.choice_made.connect(create_task)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -185,9 +187,12 @@ func update_displays() -> void:
 ### TASKS ###
 
 func create_task(task_data : TaskResource):
+	print(task_data.title)
 	var task = ticket_scene.instantiate() as TaskTicket
-	task.init_data(task_data)
+	print(task)
+	
 	task_container.add_child(task)
+	task.init_data(task_data)
 
 
 ### SIGNALS ###
@@ -206,7 +211,7 @@ func _on_npc_interacted(npc: NPC) -> void:
 	print(npc.npc_data.to_string() + "\n")
 	if npc.npc_data and not npc.npc_data.dialogue.is_empty():
 		print(npc.npc_data.to_string() + "\n")
-		_dialogue_box.start_dialogue(npc.npc_data.dialogue)
+		_dialogue_box.start_dialogue(npc.npc_data.dialogue, npc)
 		npc._interaction_prompt.visible = false
 		npc._has_talked = true
 

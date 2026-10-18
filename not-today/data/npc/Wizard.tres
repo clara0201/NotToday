@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://5n4rf8c81g58"]
+
+[ext_resource type="Script" uid="uid://d1hm1m6khsty2" path="res://scripts/resources/dialog_line_resource.gd" id="1_agqn6"]
+[ext_resource type="Script" uid="uid://c0meiq6b4xavc" path="res://scripts/resources/npc_resources.gd" id="2_esdxm"]
+
+[resource]
+script = ExtResource("2_esdxm")
+metadata/_custom_type_script = "uid://c0meiq6b4xavc"
