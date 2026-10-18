@@ -139,12 +139,12 @@ func _on_choice_pressed(index: int) -> void:
 		_close()
 	else:
 		_show_current_line()
-
-	choice_made.emit(npc.task)
+	
+	if(index == 0):
+		choice_made.emit(npc.task)
 
 
 func _close() -> void:
 	_panel.visible = false
-	_lines.clear()
 	_current_line_index = 0
 	dialogue_finished.emit()

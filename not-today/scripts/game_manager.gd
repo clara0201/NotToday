@@ -14,7 +14,7 @@ class_name GameManager
 @onready var day_over_layer = $DayOverLayer
 @onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/MarginContainer/DayLabel
 @onready var end_layer = $EndingLayer
-@onready var task_container = $UILayer/TaskListMC/ScrollContainer/VBoxContainer
+@onready var task_container : VBoxContainer = $UILayer/TaskListMC/ScrollContainer/VBoxContainer
 
 @onready var npc_group = $npc_group
 @onready var _dialogue_box: CanvasLayer = $DialogueBox
@@ -46,6 +46,11 @@ var day_won_nos : int
 
 var day_names = ["Mondagt", "Tuesdlof", "Wednasgot"]
 
+var people_counter : int
+var people_interacted_with : int
+
+signal day_over
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Connect NPC interaction signals
@@ -53,6 +58,7 @@ func _ready() -> void:
 		npc.interacted.connect(_on_npc_interacted)
 	
 	_dialogue_box.choice_made.connect(create_task)
+	people_counter = npc_group.get_child_count()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,6 +66,10 @@ func _process(delta: float) -> void:
 		timer_label.text = "%02d:%02d" % time_left()
 
 	if Input.is_action_just_released("MinigamePhase"):
+		start_minigame_phase()
+	
+	if people_interacted_with == people_counter and !in_minigame_phase:
+		people_interacted_with = 0
 		start_minigame_phase()
 
 func time_left():
@@ -94,6 +104,11 @@ func start_day():
 	day_won_nos = 0
 	
 	tasks_list.clear()
+	for t in task_container.get_children():
+		if(t.name != "MarginContainer"):
+			t.queue_free()
+	
+	day_over.emit()
 	
 	animation_player.play("fade_to_normal")
 	
@@ -121,7 +136,6 @@ func start_minigame_phase():
 	for n in task_container.get_children():
 		if(n.name != "MarginContainer"):
 			var task = n.task_data
-			print(task)
 			tasks_list.append(task)
 	
 	next_minigame()
@@ -129,7 +143,8 @@ func start_minigame_phase():
 func finish_minigame_phase():	
 	timer.stop()
 	
-	current_minigame.incomplete_minigame()
+	if(current_minigame):
+		current_minigame.incomplete_minigame()
 	
 	for task in tasks_list:
 		if not task.completed:
@@ -197,12 +212,11 @@ func update_displays() -> void:
 ### TASKS ###
 
 func create_task(task_data : TaskResource):
-	print(task_data.title)
-	var task = ticket_scene.instantiate() as TaskTicket
-	print(task)
-	
-	task_container.add_child(task)
-	task.init_data(task_data)
+	people_interacted_with += 1
+	for m in task_data.multiplier:
+		var task = ticket_scene.instantiate() as TaskTicket	
+		task_container.add_child(task)
+		task.init_data(task_data)
 
 
 ### SIGNALS ###

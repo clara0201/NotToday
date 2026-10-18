@@ -153,7 +153,7 @@ _data = {
 
 [node name="Node2D" type="Node2D" unique_id=710089954]
 script = ExtResource("1_ohiwn")
-minigames_timer = 20
+minigames_timer = 10
 
 [node name="TimerMinigames" type="Timer" parent="." unique_id=907534146]
 one_shot = true
