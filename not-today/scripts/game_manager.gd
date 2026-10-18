@@ -11,8 +11,9 @@ class_name GameManager
 @onready var fadeout_color_rect = $FadeoutLayer/ColorRect
 @onready var animation_player = $FadeoutLayer/AnimationPlayer
 @onready var day_over_layer = $DayOverLayer
-@onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/DayLabel
+@onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/MarginContainer/DayLabel
 @onready var end_layer = $EndingLayer
+@onready var task_container = $UILayer/TaskListMC/ScrollContainer/VBoxContainer
 
 @export var likeability_percentage = 30
 @export var likeability_loss = 10
@@ -29,6 +30,8 @@ class_name GameManager
 @export var current_minigame : Minigame
 
 @export var total_days = 3
+
+var ticket_scene = preload("res://scenes/task_ticket.tscn")
 
 var current_day = 1
 var in_minigame_phase = false
@@ -172,6 +175,14 @@ func on_minigame_completed() -> void:
 func update_displays() -> void:	
 	likeability_label.text = "Likeability: " + str(likeability_percentage) + "%"
 	no_label.text = "No's: " + str(no_counter)
+
+
+### TASKS ###
+
+func create_task(task_data : TaskResource):
+	var task = ticket_scene.instantiate() as TaskTicket
+	task.init_data(task_data)
+	task_container.add_child(task)
 
 
 ### SIGNALS ###

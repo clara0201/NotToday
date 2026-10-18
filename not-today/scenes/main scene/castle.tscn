@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://h5wa4igg0gs2" path="res://assets/PlayerSprite/Player2.png" id="12_4yhv7"]
 [ext_resource type="Texture2D" uid="uid://gt6vw3ejfo8j" path="res://assets/PlayerSprite/Player3.png" id="13_7788p"]
 [ext_resource type="Script" uid="uid://cwm1hhjt23vqp" path="res://scripts/day_over_layer.gd" id="16_cq7t8"]
+[ext_resource type="Texture2D" uid="uid://c0q88mxegn6tc" path="res://assets/UI/task bg.png" id="16_w06k0"]
 [ext_resource type="Texture2D" uid="uid://cevha1k62pp4s" path="res://assets/UI/fire.png" id="17_7788p"]
 [ext_resource type="AudioStream" uid="uid://bjyst100cp018" path="res://assets/Sounds/BackgroundMusic_Holy Forest.wav" id="18_4aumm"]
 [ext_resource type="Texture2D" uid="uid://dmt8ik45lvum7" path="res://assets/UI/!heart.png" id="18_fm11v"]
@@ -82,6 +83,18 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhvi1"]
 radius = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm11v"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="Animation" id="Animation_l2ux7"]
 length = 0.001
@@ -213,7 +226,7 @@ custom_minimum_size = Vector2(300, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 60
+theme_override_constants/margin_top = 30
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UILayer/TaskListMC" unique_id=1688226450]
 custom_minimum_size = Vector2(340, 900)
@@ -226,7 +239,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="DayLabel" type="Label" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=1335326617]
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer" unique_id=621392789]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer/MarginContainer" unique_id=1462088465]
+layout_mode = 2
+texture = ExtResource("16_w06k0")
+expand_mode = 3
+
+[node name="DayLabel" type="Label" parent="UILayer/TaskListMC/ScrollContainer/VBoxContainer/MarginContainer" unique_id=1335326617]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.5058824, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -292,8 +313,11 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 30
 
+[node name="Panel" type="Panel" parent="UILayer/TimerMC" unique_id=426617173]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fm11v")
+
 [node name="TimerLabel" type="Label" parent="UILayer/TimerMC" unique_id=1812820398]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0.09019608, 1)
 theme_override_font_sizes/font_size = 60
