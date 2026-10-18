@@ -12,6 +12,7 @@ class_name GameManager
 @onready var animation_player = $FadeoutLayer/AnimationPlayer
 @onready var day_over_layer = $DayOverLayer
 @onready var day_label = $UILayer/TaskListMC/ScrollContainer/VBoxContainer/DayLabel
+@onready var end_layer = $EndingLayer
 
 @export var likeability_percentage = 30
 @export var likeability_loss = 10
@@ -68,8 +69,7 @@ func end_day():
 		day_over_layer.visible = true
 		day_over_layer.initialize(day_completed_tasks, day_incompleted_tasks, likeability_percentage, day_won_nos)
 	else:
-		print("final day!!")
-		#TODO final screen
+		end_layer.visible = true
 
 func start_day():
 	day_over_layer.visible = false
