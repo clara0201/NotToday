@@ -1,4 +1,6 @@
 extends CanvasLayer
+class_name DialogBox
+
 ## Displays dialogue with a typewriter effect and optional choices.
 
 signal dialogue_started

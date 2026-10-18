@@ -17,7 +17,7 @@ class_name GameManager
 @onready var task_container : VBoxContainer = $UILayer/TaskListMC/ScrollContainer/VBoxContainer
 
 @onready var npc_group = $npc_group
-@onready var _dialogue_box: CanvasLayer = $DialogueBox
+@onready var _dialogue_box: DialogBox = $DialogueBox
 
 @export var likeability_percentage = 30
 @export var likeability_loss = 10
@@ -33,7 +33,7 @@ class_name GameManager
 @export var current_task_index = 0
 @export var current_minigame : Minigame
 
-@export var total_days = 2
+@export var total_days = 3
 
 var ticket_scene = preload("res://scenes/task_ticket.tscn")
 
@@ -58,6 +58,7 @@ func _ready() -> void:
 		npc.interacted.connect(_on_npc_interacted)
 	
 	_dialogue_box.choice_made.connect(create_task)
+	_dialogue_box.dialogue_finished.connect(_on_dialogue_finished)
 	people_counter = npc_group.get_child_count()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -102,10 +103,12 @@ func start_day():
 	day_completed_tasks = 0
 	day_incompleted_tasks = 0
 	day_won_nos = 0
+	current_task_index = 0
 	
 	tasks_list.clear()
 	for t in task_container.get_children():
 		if(t.name != "MarginContainer"):
+			t.task_data.completed = false
 			t.queue_free()
 	
 	day_over.emit()
@@ -116,7 +119,6 @@ func start_day():
 	# - set NPC dialogue?
 	# - move NPCs?
 	# - set Player initial position
-	
 
 ### MINIGAMES ###
 
@@ -212,7 +214,6 @@ func update_displays() -> void:
 ### TASKS ###
 
 func create_task(task_data : TaskResource):
-	people_interacted_with += 1
 	for m in task_data.multiplier:
 		var task = ticket_scene.instantiate() as TaskTicket	
 		task_container.add_child(task)
@@ -232,6 +233,7 @@ func _on_npc_interacted(npc: NPCController) -> void:
 		_dialogue_box.start_dialogue(npc.npc_data.dialogue, npc)
 		npc._interaction_prompt.visible = false
 		npc._has_talked = true
+		
 
 func _on_dialogue_finished() -> void:
-	pass
+	people_interacted_with += 1
